@@ -25,11 +25,14 @@ CONTENTS                                                *indent-guides-contents*
 ==============================================================================
 COMMANDS                                                *indent-guides-commands*
 
+:IndentGuidesToggle                                        *:IndentGuidesToggle*
+  Toggles the indent guides on and off for all buffers.
+
 :IndentGuidesEnable                                        *:IndentGuidesEnable*
-  Enables the indent guides for the current buffer.
+  Enables the indent guides for all buffers.
 
 :IndentGuidesDisable                                      *:IndentGuidesDisable*
-  Disables the indent guides for the current buffer.
+  Disables the indent guides for all buffers.
 
 ==============================================================================
 OPTIONS                                                  *indent-guides-options*
@@ -37,7 +40,7 @@ OPTIONS                                                  *indent-guides-options*
                                                   *'IndentGuides_indent_levels'*
 Use this option to control how many indent levels to display guides for:
 >
-  let g:IndentGuides_indent_levels=20
+  let g:IndentGuides_indent_levels=50
 <
 
 ==============================================================================
