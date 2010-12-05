@@ -19,8 +19,9 @@ CONTENTS                                                *indent-guides-contents*
 
   1. Commands.................................. |indent-guides-commands|
   2. Options................................... |indent-guides-options|
-  3. Changelog................................. |indent-guides-changelog|
-  4. License................................... |indent-guides-license|
+  3. Mappings.................................. |indent-guides-mappings|
+  4. Changelog................................. |indent-guides-changelog|
+  5. License................................... |indent-guides-license|
 
 ==============================================================================
 1. COMMANDS                                             *indent-guides-commands*
@@ -44,13 +45,29 @@ Use this option to control how many indent levels to display guides for:
 <
 
 ==============================================================================
-3. CHANGELOG                                           *indent-guides-changelog*
+3. MAPPINGS                                             *indent-guides-mappings*
+
+The default mapping for toggling indent guides is <Leader>ig. You can easy map
+it to other keys. For example:
+>
+  :nmap <Leader>ig :IndentGuidesToggle<CR>
+<
+
+You can also map some other commands that are not mapped by default. For
+example:
+>
+  :nmap <Leader>ie :IndentGuidesEnable<CR>
+  :nmap <Leader>id :IndentGuidesDisable<CR>
+<
+
+==============================================================================
+4. CHANGELOG                                           *indent-guides-changelog*
 
 1.0~
   * First public version.
 
 ==============================================================================
-4. LICENSE                                               *indent-guides-license*
+5. LICENSE                                               *indent-guides-license*
 
 The MIT Licence
 http://www.opensource.org/licenses/mit-license.php
