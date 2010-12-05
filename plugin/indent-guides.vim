@@ -14,6 +14,7 @@ endfunction
 
 function! s:IndentGuidesEnable()
   IndentGuidesDisable
+  call s:IndentGuidesHighlightColors()
 
   for level in range(1, g:IndentGuides_indent_levels)
     let group      = 'IndentLevel' . ((level % 2 == 0) ? 'Even' : 'Odd')
@@ -41,6 +42,11 @@ function! s:IndentGuidesDisable()
   endif
 endfunction
 
+function! s:IndentGuidesHighlightColors()
+  hi IndentLevelOdd  guibg=#252525
+  hi IndentLevelEven guibg=#303030
+endfunction
+
 " Commands
 command! IndentGuidesToggle  call s:IndentGuidesToggle()
 command! IndentGuidesEnable  call s:IndentGuidesEnable()
@@ -49,10 +55,6 @@ command! IndentGuidesDisable call s:IndentGuidesDisable()
 " Default options
 let g:IndentGuides_indent_levels = 50
 let g:IndentGuides_debug         = 0
-
-" Default highlight colors
-hi IndentLevelOdd  guibg=#252525
-hi IndentLevelEven guibg=#303030
 
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>
