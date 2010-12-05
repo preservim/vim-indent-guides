@@ -23,7 +23,7 @@ CONTENTS                                                *indent-guides-contents*
   4. License................................... |indent-guides-license|
 
 ==============================================================================
-COMMANDS                                                *indent-guides-commands*
+1. COMMANDS                                             *indent-guides-commands*
 
 :IndentGuidesToggle                                        *:IndentGuidesToggle*
   Toggles the indent guides on and off for all buffers.
@@ -35,7 +35,7 @@ COMMANDS                                                *indent-guides-commands*
   Disables the indent guides for all buffers.
 
 ==============================================================================
-OPTIONS                                                  *indent-guides-options*
+2. OPTIONS                                               *indent-guides-options*
 
                                                   *'IndentGuides_indent_levels'*
 Use this option to control how many indent levels to display guides for:
@@ -44,13 +44,13 @@ Use this option to control how many indent levels to display guides for:
 <
 
 ==============================================================================
-CHANGELOG                                              *indent-guides-changelog*
+3. CHANGELOG                                           *indent-guides-changelog*
 
 1.0~
   * First public version.
 
 ==============================================================================
-LICENSE                                                  *indent-guides-license*
+4. LICENSE                                               *indent-guides-license*
 
 The MIT Licence
 http://www.opensource.org/licenses/mit-license.php
