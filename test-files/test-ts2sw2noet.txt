@@ -1,0 +1,25 @@
+vim:tw=78:ts=2:sw=2:noet
+
+test
+	test
+		test
+			test
+				test
+					test
+						test
+							test
+								test
+									test
+										test
+											test
+												test
+													test
+														test
+															test
+																test
+																	test
+																		test
+																			test
+																				test
+																					test
+
