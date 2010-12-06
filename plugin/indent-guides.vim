@@ -90,8 +90,10 @@ function! HexToDec(arg)
   return (a:arg =~? '^0x') ? a:arg + 0 : ('0x'.a:arg) + 0
 endfunction
 
+"
 " Example: HexColorToRGB('#0088FF')
 " Returns: [0, 136, 255]
+"
 function! HexColorToRGB(hex_color)
   let l:rgb = []
   if matchstr(a:hex_color, s:hex_color_pattern) == a:hex_color
