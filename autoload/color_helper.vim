@@ -4,9 +4,9 @@
 "
 " Regex pattern for a hex color.
 "
-" Examples:
+" Example matches:
 " - '#123ABC'
-" - '#FFFFFF'
+" - '#ffffff'
 " - '#000000'
 "
 let s:hex_color_pattern = '#[0-9A-Fa-f]\{6\}'
@@ -41,6 +41,8 @@ function! color_helper#hex_to_dec(arg)
 endfunction
 
 "
+" Converts a given hex color string into an rgb list (eg. [red, green, blue]).
+"
 " Example: color_helper#hex_color_to_rgb('#0088FF')
 " Returns: [0, 136, 255]
 "
@@ -58,6 +60,8 @@ function! color_helper#hex_color_to_rgb(hex_color)
 endfunction
 
 "
+" Converts a given rgb list (eg. [red, green, blue]) into a hex color string.
+"
 " Example: color_helper#rgb_color_to_hex([0, 136, 255])
 " Returns: '#0088FF'
 "
@@ -71,20 +75,26 @@ function! color_helper#rgb_color_to_hex(rgb_color)
 endfunction
 
 "
-" Example: color_helper#hex_color_brighten('#000000', 0.10)
+" Returns a ligtened color using the given color and the percent to lighten it
+" by.
+"
+" Example: color_helper#hex_color_lighten('#000000', 0.10)
 " Returns: '#191919'
 "
-function! color_helper#hex_color_brighten(color, percent)
+function! color_helper#hex_color_lighten(color, percent)
   let l:rgb = color_helper#hex_color_to_rgb(a:color)
-  let l:rgb_brightened = []
+  let l:rgb_lightened = []
 
   for decimal in l:rgb
-    call add(l:rgb_brightened, float2nr(decimal * (a:percent + 1)))
+    call add(l:rgb_lightened, float2nr(decimal * (a:percent + 1)))
   endfor
 
-  return color_helper#rgb_color_to_hex(l:rgb_brightened)
+  return color_helper#rgb_color_to_hex(l:rgb_lightened)
 endfunction
 
+"
+" Returns a darkened color using the given color and the percent to darken it
+" by.
 "
 " Example: color_helper#hex_color_darken('#FFFFFF', 0.10)
 " Returns: '#E5E5E5'

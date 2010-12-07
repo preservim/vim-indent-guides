@@ -2,7 +2,7 @@
 " Homepage: http://github.com/nathanaelkane/vim-indent-guides
 
 "
-"
+" Toggles the indent guides on and off for all buffers.
 "
 function! indent_guides#toggle()
   let g:indent_guides_matches =
@@ -16,7 +16,7 @@ function! indent_guides#toggle()
 endfunction
 
 "
-"
+" Enables the indent guides for all buffers.
 "
 function! indent_guides#enable()
   call indent_guides#disable()
@@ -44,7 +44,7 @@ function! indent_guides#enable()
 endfunction
 
 "
-"
+" Disables the indent guides for all buffers.
 "
 function! indent_guides#disable()
   if !empty(g:indent_guides_matches)
@@ -58,7 +58,7 @@ function! indent_guides#disable()
 endfunction
 
 "
-"
+" Automagically calculates and defines the indent highlight colors.
 "
 function! indent_guides#highlight_colors()
   if g:indent_guides_auto_colors
@@ -67,8 +67,8 @@ function! indent_guides#highlight_colors()
     let hi_normal_guibg = matchstr(hi_normal, 'guibg=\zs#[0-9A-Fa-f]\{6\}\ze')
 
     " calculate the highlight background colors
-    let hi_odd_bg  = indent_guides#brighten_or_darken_color(hi_normal_guibg)
-    let hi_even_bg = indent_guides#brighten_or_darken_color(hi_odd_bg)
+    let hi_odd_bg  = indent_guides#lighten_or_darken_color(hi_normal_guibg)
+    let hi_even_bg = indent_guides#lighten_or_darken_color(hi_odd_bg)
 
     " define the new highlights
     exe "hi IndentGuidesOdd  guibg=" . hi_odd_bg
@@ -77,14 +77,14 @@ function! indent_guides#highlight_colors()
 endfunction
 
 "
-" Takes a color and darkens or brightens it depending on whether a dark or
-" light colorscheme is being used
+" Takes a color and darkens or lightens it depending on whether a dark or
+" light colorscheme is being used.
 "
-function! indent_guides#brighten_or_darken_color(color)
+function! indent_guides#lighten_or_darken_color(color)
     let percent = g:indent_guides_auto_colors_change_percent
 
     let new_color = (&g:background == 'dark') ?
-    \ color_helper#hex_color_brighten(a:color, percent) :
+    \ color_helper#hex_color_lighten(a:color, percent) :
     \ color_helper#hex_color_darken  (a:color, percent)
 
     return new_color
