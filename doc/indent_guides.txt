@@ -1,4 +1,4 @@
-*indent-guides.txt*  A plugin for visually displaying indent levels in Vim.
+*indent_guides.txt*  A plugin for visually displaying indent levels in Vim.
 
                                                                  *indent-guides*
       ____           __            __     ______       _      __
