@@ -23,17 +23,17 @@ let g:indent_guides_indent_levels =
   \ exists('g:indent_guides_indent_levels') ?
   \ g:indent_guides_indent_levels : 50
 
-let g:indent_guides_debug =
-  \ exists('g:indent_guides_debug') ?
-  \ g:indent_guides_debug : 0
-
 let g:indent_guides_auto_colors =
   \ exists('g:indent_guides_auto_colors') ?
   \ g:indent_guides_auto_colors : 1
 
 let g:indent_guides_auto_colors_change_percent =
   \ exists('g:indent_guides_auto_colors_change_percent') ?
-  \ g:indent_guides_auto_colors_change_percent : 0.20
+  \ g:indent_guides_auto_colors_change_percent : 0.10
+
+let g:indent_guides_debug =
+  \ exists('g:indent_guides_debug') ?
+  \ g:indent_guides_debug : 0
 
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>
