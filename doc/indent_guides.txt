@@ -39,9 +39,27 @@ CONTENTS                                                *indent-guides-contents*
 2. OPTIONS                                               *indent-guides-options*
 
                                                  *'indent_guides_indent_levels'*
-Use this option to control how many indent levels to display guides for:
+Use this option to control how many indent levels to display guides for.
+Default: 20. Values: integer.
 >
-  let g:indent_guides_indent_levels=50
+  let g:indent_guides_indent_levels = 50
+<
+
+                                                   *'indent_guides_auto_colors'*
+Use this option to control whether or not the plugin automatically calculates
+the highlight colors. Will use the current colorscheme's background color as a
+base color.
+Default: 1. Values: 0 or 1.
+>
+  let g:indent_guides_auto_colors = 1
+<
+
+                                    *'indent_guides_auto_colors_change_percent'*
+Use this option to control the percent the highlight colors will be lightened
+or darkened.
+Default: 0.10. Values: between 0 and 1.
+>
+  let g:indent_guides_auto_colors_change_percent = 0.20
 <
 
 ==============================================================================
