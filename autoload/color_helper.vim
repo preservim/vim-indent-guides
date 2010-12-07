@@ -1,3 +1,6 @@
+" Author:   Nate Kane <nathanaelkane AT gmail DOT com>
+" Homepage: http://github.com/nathanaelkane/vim-indent-guides
+
 "
 " Regex pattern for a hex color.
 "
@@ -43,12 +46,14 @@ endfunction
 "
 function! color_helper#hex_color_to_rgb(hex_color)
   let l:rgb = []
+
   if matchstr(a:hex_color, s:hex_color_pattern) == a:hex_color
     let l:red   = color_helper#hex_to_dec(strpart(a:hex_color, 1, 2))
     let l:green = color_helper#hex_to_dec(strpart(a:hex_color, 3, 2))
     let l:blue  = color_helper#hex_to_dec(strpart(a:hex_color, 5, 2))
     let l:rgb = [l:red, l:green, l:blue]
   end
+
   return l:rgb
 endfunction
 
@@ -61,6 +66,7 @@ function! color_helper#rgb_color_to_hex(rgb_color)
   let l:hex_color .= color_helper#dec_to_hex(a:rgb_color[0], 2) " red
   let l:hex_color .= color_helper#dec_to_hex(a:rgb_color[1], 2) " green
   let l:hex_color .= color_helper#dec_to_hex(a:rgb_color[2], 2) " blue
+
   return l:hex_color
 endfunction
 
@@ -71,9 +77,11 @@ endfunction
 function! color_helper#hex_color_brighten(color, percent)
   let l:rgb = color_helper#hex_color_to_rgb(a:color)
   let l:rgb_brightened = []
+
   for decimal in l:rgb
-    call add(l:rgb_brightened, float2nr((255 - decimal) * a:percent))
+    call add(l:rgb_brightened, float2nr(decimal * (a:percent + 1)))
   endfor
+
   return color_helper#rgb_color_to_hex(l:rgb_brightened)
 endfunction
 
@@ -84,9 +92,11 @@ endfunction
 function! color_helper#hex_color_darken(color, percent)
   let l:rgb = color_helper#hex_color_to_rgb(a:color)
   let l:rgb_darkened = []
+
   for decimal in l:rgb
     call add(l:rgb_darkened, float2nr(decimal * (1 - a:percent)))
   endfor
+
   return color_helper#rgb_color_to_hex(l:rgb_darkened)
 endfunction
 
