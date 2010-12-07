@@ -1,6 +1,8 @@
 # Indent Guides
 A Vim plugin for visually displaying indent levels.
 
+**Status:** almost ready for an official release.
+
 ## Installation
 Coming soon.
 
