@@ -5,13 +5,17 @@
 " Toggles the indent guides on and off for all buffers.
 "
 function! indent_guides#toggle()
-  let g:indent_guides_matches =
-  \ exists('g:indent_guides_matches') ? g:indent_guides_matches : []
-
-  if empty(g:indent_guides_matches)
+  call indent_guides#init_matches()
+  if empty(w:indent_guides_matches)
     call indent_guides#enable()
+
+    " DEBUG
+    "echo 'enable'
   else
     call indent_guides#disable()
+
+    " DEBUG
+    "echo 'disable'
   endif
 endfunction
 
@@ -19,6 +23,7 @@ endfunction
 " Enables the indent guides for all buffers.
 "
 function! indent_guides#enable()
+  call indent_guides#init_matches()
   call indent_guides#disable()
 
   if g:indent_guides_auto_colors
@@ -35,25 +40,35 @@ function! indent_guides#enable()
     let pattern   .= '\ze'
 
     " define the higlight pattern and add to list
-    call add(g:indent_guides_matches, matchadd(group, pattern))
+    call add(w:indent_guides_matches, matchadd(group, pattern))
 
     if g:indent_guides_debug
       echo "matchadd ('" . group . "', '" . pattern . "')"
     end
   endfor
+
+  " DEBUG
+  "echo w:indent_guides_matches
 endfunction
 
 "
 " Disables the indent guides for all buffers.
 "
 function! indent_guides#disable()
-  if !empty(g:indent_guides_matches)
+  call indent_guides#init_matches()
+
+  if !empty(w:indent_guides_matches)
+
+    " DEBUG
+    "echo w:indent_guides_matches
+
     let index = 0
-    for item in g:indent_guides_matches
-      call matchdelete(item)
-      call remove(g:indent_guides_matches, index)
+    for match_id in w:indent_guides_matches
+      call matchdelete(match_id)
+      call remove(w:indent_guides_matches, index)
       let index += index
     endfor
+    "call filter(w:indent_guides_matches, 0)
   endif
 endfunction
 
@@ -84,8 +99,8 @@ function! indent_guides#lighten_or_darken_color(color)
     let percent = g:indent_guides_auto_colors_change_percent
 
     let new_color = (&g:background == 'dark') ?
-    \ color_helper#hex_color_lighten(a:color, percent) :
-    \ color_helper#hex_color_darken  (a:color, percent)
+      \ color_helper#hex_color_lighten(a:color, percent) :
+      \ color_helper#hex_color_darken (a:color, percent)
 
     return new_color
 endfunction
@@ -102,5 +117,11 @@ function! indent_guides#capture_highlight(group_name)
     redir END
 
     return output
+endfunction
+
+function! indent_guides#init_matches()
+  let w:indent_guides_matches =
+    \ exists('w:indent_guides_matches') ?
+    \ w:indent_guides_matches : []
 endfunction
 
