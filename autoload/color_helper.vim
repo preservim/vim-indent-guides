@@ -2,16 +2,6 @@
 " Homepage: http://github.com/nathanaelkane/vim-indent-guides
 
 "
-" Regex pattern for a hex color.
-"
-" Example matches:
-" - '#123ABC'
-" - '#ffffff'
-" - '#000000'
-"
-let s:hex_color_pattern = '#[0-9A-Fa-f]\{6\}'
-
-"
 " Return hex string equivalent to given decimal string or number.
 "
 " Example: color_helper#dec_to_hex(255, 2)
@@ -49,7 +39,7 @@ endfunction
 function! color_helper#hex_color_to_rgb(hex_color)
   let l:rgb = []
 
-  if matchstr(a:hex_color, s:hex_color_pattern) == a:hex_color
+  if a:hex_color =~ g:indent_guides_hex_color_pattern
     let l:red   = color_helper#hex_to_dec(strpart(a:hex_color, 1, 2))
     let l:green = color_helper#hex_to_dec(strpart(a:hex_color, 3, 2))
     let l:blue  = color_helper#hex_to_dec(strpart(a:hex_color, 5, 2))

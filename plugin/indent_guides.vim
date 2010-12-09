@@ -35,6 +35,24 @@ let g:indent_guides_debug =
   \ exists('g:indent_guides_debug') ?
   \ g:indent_guides_debug : 0
 
+let g:indent_guides_autocmds_enabled = 0
+
+"
+" Regex pattern for a hex color.
+"
+" Example matches:
+" - '#123ABC'
+" - '#ffffff'
+" - '#000000'
+"
+let g:indent_guides_hex_color_pattern = '#[0-9A-Fa-f]\{6\}'
+
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>
+
+" Auto commands
+augroup indent_guides
+  autocmd!
+  autocmd BufEnter,WinEnter * call indent_guides#process_autocmds()
+augroup END
 
