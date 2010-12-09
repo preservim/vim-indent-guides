@@ -27,13 +27,15 @@ CONTENTS                                                *indent-guides-contents*
 1. COMMANDS                                             *indent-guides-commands*
 
 :IndentGuidesToggle                                        *:IndentGuidesToggle*
-  Toggles the indent guides on and off for all buffers.
+  Toggles the indent guides on and off.
 
 :IndentGuidesEnable                                        *:IndentGuidesEnable*
-  Enables the indent guides for all buffers.
+  Enables the indent guides for the current buffer and any other buffer upon
+  entering it.
 
 :IndentGuidesDisable                                      *:IndentGuidesDisable*
-  Disables the indent guides for all buffers.
+  Disables the indent guides for the current buffer and any other buffer upon
+  entering it.
 
 ==============================================================================
 2. OPTIONS                                               *indent-guides-options*
