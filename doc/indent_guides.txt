@@ -56,12 +56,12 @@ Default: 1. Values: 0 or 1.
   let g:indent_guides_auto_colors = 1
 <
 
-                                    *'indent_guides_auto_colors_change_percent'*
+                                          *'indent_guides_color_change_percent'*
 Use this option to control the percent at which the highlight colors will be
 lightened or darkened.
-Default: 0.20. Values: between 0 and 1.
+Default: 0.05. Values: between 0 and 1.
 >
-  let g:indent_guides_auto_colors_change_percent = 0.20
+  let g:indent_guides_color_change_percent = 0.05
 <
 
 ==============================================================================

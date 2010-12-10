@@ -106,13 +106,13 @@ endfunction
 " colorscheme is being used.
 "
 function! indent_guides#lighten_or_darken_color(color)
-    let percent = g:indent_guides_auto_colors_change_percent
+  let percent = g:indent_guides_color_change_percent
 
-    let new_color = (&g:background == 'dark') ?
-      \ color_helper#hex_color_lighten(a:color, percent) :
-      \ color_helper#hex_color_darken (a:color, percent)
+  let new_color = (&g:background == 'dark') ?
+    \ color_helper#hex_color_lighten(a:color, percent) :
+    \ color_helper#hex_color_darken (a:color, percent)
 
-    return new_color
+  return new_color
 endfunction
 
 "

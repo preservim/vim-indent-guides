@@ -27,9 +27,9 @@ let g:indent_guides_auto_colors =
   \ exists('g:indent_guides_auto_colors') ?
   \ g:indent_guides_auto_colors : 1
 
-let g:indent_guides_auto_colors_change_percent =
-  \ exists('g:indent_guides_auto_colors_change_percent') ?
-  \ g:indent_guides_auto_colors_change_percent : 0.20
+let g:indent_guides_color_change_percent =
+  \ exists('g:indent_guides_color_change_percent') ?
+  \ g:indent_guides_color_change_percent : 0.05
 
 let g:indent_guides_debug =
   \ exists('g:indent_guides_debug') ?
