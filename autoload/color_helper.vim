@@ -75,8 +75,8 @@ function! color_helper#hex_color_lighten(color, percent)
   let l:rgb = color_helper#hex_color_to_rgb(a:color)
   let l:rgb_lightened = []
 
-  for decimal in l:rgb
-    call add(l:rgb_lightened, float2nr(decimal * (a:percent + 1)))
+  for i in l:rgb
+    call add(l:rgb_lightened, float2nr(i + ((255 - i) * a:percent)))
   endfor
 
   return color_helper#rgb_color_to_hex(l:rgb_lightened)
@@ -93,8 +93,8 @@ function! color_helper#hex_color_darken(color, percent)
   let l:rgb = color_helper#hex_color_to_rgb(a:color)
   let l:rgb_darkened = []
 
-  for decimal in l:rgb
-    call add(l:rgb_darkened, float2nr(decimal * (1 - a:percent)))
+  for i in l:rgb
+    call add(l:rgb_darkened, float2nr(i * (1 - a:percent)))
   endfor
 
   return color_helper#rgb_color_to_hex(l:rgb_darkened)
