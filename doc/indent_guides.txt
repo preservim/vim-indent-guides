@@ -1,4 +1,4 @@
-*indent_guides.txt*  A plugin for visually displaying indent levels in Vim.
+*indent_guides.txt*  A plugin for visually displaying indent levels in vim.
 
                                                                  *indent-guides*
       ____           __            __     ______       _      __
@@ -8,45 +8,60 @@
   /___//_/ /_/\__,_/ \___/_/ /_/\__/   \____/ \__,_/_/ \__,_/ \___/____/
 
 
-A plugin for visually displaying indent levels in Vim.
-
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
 Version:     1.0
-Last Change: 05 Dec 2010
+Last Change: 11 Dec 2010
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
 
-  1. Commands.................................. |indent-guides-commands|
-  2. Options................................... |indent-guides-options|
-  3. Mappings.................................. |indent-guides-mappings|
-  4. Changelog................................. |indent-guides-changelog|
-  5. License................................... |indent-guides-license|
+  1. Introduction.............................. |indent-guides-introduction|
+  2. Commands.................................. |indent-guides-commands|
+  3. Options................................... |indent-guides-options|
+  4. Mappings.................................. |indent-guides-mappings|
+  5. About..................................... |indent-guides-about|
+  6. Changelog................................. |indent-guides-changelog|
+  7. License................................... |indent-guides-license|
 
 ==============================================================================
-1. COMMANDS                                             *indent-guides-commands*
+1. INTRODUCTION                                     *indent-guides-introduction*
 
+Indent Guides is a plugin for visually displaying indent levels in vim.
+
+Features:
+  * Can detect both tab and space indent styles.
+  * Automatically inspects your colorscheme and picks appropriate colors.
+  * Will highlight indent levels with alternating colors.
+
+==============================================================================
+2. COMMANDS                                             *indent-guides-commands*
+
+------------------------------------------------------------------------------
 :IndentGuidesToggle                                        *:IndentGuidesToggle*
   Toggles the indent guides on and off.
 
+------------------------------------------------------------------------------
 :IndentGuidesEnable                                        *:IndentGuidesEnable*
   Enables the indent guides for the current buffer and any other buffer upon
   entering it.
 
+------------------------------------------------------------------------------
 :IndentGuidesDisable                                      *:IndentGuidesDisable*
   Disables the indent guides for the current buffer and any other buffer upon
   entering it.
 
 ==============================================================================
-2. OPTIONS                                               *indent-guides-options*
+3. OPTIONS                                               *indent-guides-options*
 
+------------------------------------------------------------------------------
                                                  *'indent_guides_indent_levels'*
 Use this option to control how many indent levels to display guides for.
-Default: 20. Values: integer.
+Default: 30. Values: integer.
 >
-  let g:indent_guides_indent_levels = 50
+  let g:indent_guides_indent_levels = 30
 <
 
+------------------------------------------------------------------------------
                                                    *'indent_guides_auto_colors'*
 Use this option to control whether or not the plugin automatically calculates
 the highlight colors. Will use the current colorscheme's background color as a
@@ -56,6 +71,13 @@ Default: 1. Values: 0 or 1.
   let g:indent_guides_auto_colors = 1
 <
 
+If you set this option to 0, be sure to manually define some highlight colors.
+>
+  hi IndentGuidesOdd  guibg=#EEEEEE
+  hi IndentGuidesEven guibg=#CCCCCC
+<
+
+------------------------------------------------------------------------------
                                           *'indent_guides_color_change_percent'*
 Use this option to control the percent at which the highlight colors will be
 lightened or darkened.
@@ -65,10 +87,10 @@ Default: 0.05. Values: between 0 and 1.
 <
 
 ==============================================================================
-3. MAPPINGS                                             *indent-guides-mappings*
+4. MAPPINGS                                             *indent-guides-mappings*
 
-The default mapping for toggling indent guides is <Leader>ig. You can easy map
-it to other keys. For example:
+The default mapping for toggling indent guides is <Leader>ig. You can easily
+map it to other keys. For example:
 >
   :nmap <Leader>ig :IndentGuidesToggle<CR>
 <
@@ -81,13 +103,34 @@ example:
 <
 
 ==============================================================================
-4. CHANGELOG                                           *indent-guides-changelog*
+5. ABOUT                                                   *indent-guides-about*
+
+Why did I build this plugin?
+  * I believe indent guides make nested code easier to read and understand.
+  * Other editors have them and it's high time vim did.
+  * None of the existing indent guide plugins on the market suited my needs.
+  * I wanted to learn me some VimL.
+
+Links:
+  * Github:        https://github.com/nathanaelkane/vim-indent-guides
+  * Bugs & Issues: https://github.com/nathanaelkane/vim-indent-guides/issues
+
+Credits:
+  * Matt Wozniski (godlygeek) for letting me use the list of color names and
+    hex codes from his CSApprox plugin.
+
+Bug reports, feedback, suggestions etc are welcomed. Email me at
+<nathanaelkane AT gmail DOT com> or jump on IRC and send me a message, I
+usually idle in the Freenode #vim channel as nate-.
+
+==============================================================================
+6. CHANGELOG                                           *indent-guides-changelog*
 
 1.0~
   * First public version.
 
 ==============================================================================
-5. LICENSE                                               *indent-guides-license*
+7. LICENSE                                               *indent-guides-license*
 
 The MIT Licence
 http://www.opensource.org/licenses/mit-license.php
