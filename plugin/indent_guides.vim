@@ -26,7 +26,7 @@ command! IndentGuidesDisable call s:IndentGuidesDisable()
 " Default options
 let g:indent_guides_indent_levels =
   \ exists('g:indent_guides_indent_levels') ?
-  \ g:indent_guides_indent_levels : 50
+  \ g:indent_guides_indent_levels : 30
 
 let g:indent_guides_auto_colors =
   \ exists('g:indent_guides_auto_colors') ?
