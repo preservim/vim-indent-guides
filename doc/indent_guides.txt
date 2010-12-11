@@ -117,7 +117,7 @@ Links:
 
 Credits:
   * Matt Wozniski (godlygeek) for letting me use the list of color names and
-    hex codes from his CSApprox plugin.
+    hex codes from his CSApprox plugin. (PENDING APPROVAL)
 
 Bug reports, feedback, suggestions etc are welcomed. Email me at
 <nathanaelkane AT gmail DOT com> or jump on IRC and send me a message, I
