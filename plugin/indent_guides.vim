@@ -1,14 +1,9 @@
 " Author:   Nate Kane <nathanaelkane AT gmail DOT com>
 " Homepage: http://github.com/nathanaelkane/vim-indent-guides
 
-if exists('g:loaded_indent_guides') || &cp
+if exists('g:loaded_indent_guides') || &cp || !has('gui_running')
   finish
 endif
-
-if !has('gui_running')
-  echoerr "The Indent Guides plugin requires gvim to work correctly."
-  finish
-end
 
 let g:loaded_indent_guides = 1
 
