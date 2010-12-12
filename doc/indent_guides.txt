@@ -115,10 +115,6 @@ Links:~
   * Github:        https://github.com/nathanaelkane/vim-indent-guides
   * Bugs & Issues: https://github.com/nathanaelkane/vim-indent-guides/issues
 
-Credits:~
-  * Matt Wozniski (godlygeek) for letting me use the list of color names and
-    hex codes from his CSApprox plugin. (PENDING APPROVAL)
-
 Contact:~
   * Twitter: @nathanaelkane
   * Email:   <nathanaelkane AT gmail DOT com>
