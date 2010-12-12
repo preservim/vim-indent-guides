@@ -1,4 +1,4 @@
-*indent_guides.txt*  A plugin for visually displaying indent levels in vim.
+*indent_guides.txt*  A plugin for visually displaying indent levels in gvim.
 
                                                                  *indent-guides*
       ____           __            __     ______       _      __
@@ -26,12 +26,16 @@ CONTENTS                                                *indent-guides-contents*
 ==============================================================================
 1. INTRODUCTION                                     *indent-guides-introduction*
 
-Indent Guides is a plugin for visually displaying indent levels in vim.
+Indent Guides is a plugin for visually displaying indent levels in gvim.
 
 Features:~
   * Can detect both tab and space indent styles.
   * Automatically inspects your colorscheme and picks appropriate colors.
   * Will highlight indent levels with alternating colors.
+
+Note:~
+This plugin only works with gvim at the moment. Support for terminal vim is
+planned for a future release.
 
 ==============================================================================
 2. COMMANDS                                             *indent-guides-commands*
