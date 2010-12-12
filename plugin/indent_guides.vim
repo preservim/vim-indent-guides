@@ -4,6 +4,12 @@
 if exists('g:loaded_indent_guides') || &cp
   finish
 endif
+
+if !has('gui_running')
+  echoerr "The Indent Guides plugin requires gvim to work correctly."
+  finish
+end
+
 let g:loaded_indent_guides = 1
 
 function! s:IndentGuidesToggle()
