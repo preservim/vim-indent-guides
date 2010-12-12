@@ -28,7 +28,7 @@ CONTENTS                                                *indent-guides-contents*
 
 Indent Guides is a plugin for visually displaying indent levels in vim.
 
-Features:
+Features:~
   * Can detect both tab and space indent styles.
   * Automatically inspects your colorscheme and picks appropriate colors.
   * Will highlight indent levels with alternating colors.
@@ -105,23 +105,26 @@ example:
 ==============================================================================
 5. ABOUT                                                   *indent-guides-about*
 
-Why did I build this plugin?
+Why did I build this plugin?~
   * I believe indent guides make nested code easier to read and understand.
   * Other editors have them and it's high time vim did.
   * None of the existing indent guide plugins on the market suited my needs.
   * I wanted to learn me some VimL.
 
-Links:
+Links:~
   * Github:        https://github.com/nathanaelkane/vim-indent-guides
   * Bugs & Issues: https://github.com/nathanaelkane/vim-indent-guides/issues
 
-Credits:
+Credits:~
   * Matt Wozniski (godlygeek) for letting me use the list of color names and
     hex codes from his CSApprox plugin. (PENDING APPROVAL)
 
-Bug reports, feedback, suggestions etc are welcomed. Email me at
-<nathanaelkane AT gmail DOT com> or jump on IRC and send me a message, I
-usually idle in the Freenode #vim channel as nate-.
+Contact:~
+  * Twitter: @nathanaelkane
+  * Email:   <nathanaelkane AT gmail DOT com>
+  * IRC:     nate- on Freenode (I usually idle in the #vim channel)
+
+Bug reports, feedback, suggestions etc are welcomed.
 
 ==============================================================================
 6. CHANGELOG                                           *indent-guides-changelog*
