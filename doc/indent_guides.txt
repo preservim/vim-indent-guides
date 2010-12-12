@@ -10,7 +10,7 @@
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
 Version:     1.0
-Last Change: 11 Dec 2010
+Last Change: 12 Dec 2010
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
