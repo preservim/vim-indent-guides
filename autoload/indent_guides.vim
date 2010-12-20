@@ -77,10 +77,6 @@ endfunction
 " Automagically calculates and defines the indent highlight colors.
 "
 function! indent_guides#highlight_colors()
-  " define default highlights
-  exe 'hi IndentGuidesOdd  guibg=lightgrey ctermbg=1'
-  exe 'hi IndentGuidesEven guibg=darkgrey  ctermbg=0'
-
   if g:indent_guides_auto_colors
     if has('gui_running')
       call indent_guides#gui_highlight_colors()
@@ -95,20 +91,23 @@ endfunction
 " terminal vim.
 "
 function! indent_guides#cterm_highlight_colors()
-  let hi_search = indent_guides#capture_highlight('search')
-  let pattern   = "ctermbg=\\zs[0-9A-Za-z]\\+\\ze"
+  let hi_search         = indent_guides#capture_highlight('Search')
+  let ctermfg_pattern   = "ctermfg=\\zs[0-9A-Za-z]\\+\\ze"
+  let ctermbg_pattern   = "ctermbg=\\zs[0-9A-Za-z]\\+\\ze"
+  let hi_search_ctermfg = ''
   let hi_search_ctermbg = ''
 
-  " capture the backgroud color from the search highlight
-  if hi_search =~ pattern
-    let hi_search_ctermbg = matchstr(hi_search, pattern)
+  " capture the foreground color from the search highlight
+  if hi_search =~ ctermfg_pattern
+    let hi_search_ctermfg = matchstr(hi_search, ctermfg_pattern)
+    exe 'hi IndentGuidesOdd ctermbg=' . hi_search_ctermfg
   endif
 
-  if hi_search_ctermbg =~ "[0-9A-Za-z]\\+"
-    " define the new highlights
-    exe 'hi IndentGuidesOdd  ctermbg=none'
+  " capture the background color from the search highlight
+  if hi_search =~ ctermbg_pattern
+    let hi_search_ctermbg = matchstr(hi_search, ctermbg_pattern)
     exe 'hi IndentGuidesEven ctermbg=' . hi_search_ctermbg
-  end
+  endif
 endfunction
 
 "
@@ -116,7 +115,7 @@ endfunction
 " vim.
 "
 function! indent_guides#gui_highlight_colors()
-  let hi_normal       = indent_guides#capture_highlight('normal')
+  let hi_normal       = indent_guides#capture_highlight('Normal')
   let hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
   let name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
   let hi_normal_guibg = ''
@@ -176,5 +175,13 @@ endfunction
 function! indent_guides#init_matches()
   let w:indent_guides_matches =
     \ exists('w:indent_guides_matches') ? w:indent_guides_matches : []
+endfunction
+
+"
+" Define default highlights.
+"
+function! indent_guides#define_default_highlights()
+  exe 'hi IndentGuidesOdd  guibg=none ctermbg=none'
+  exe 'hi IndentGuidesEven guibg=none ctermbg=none'
 endfunction
 
