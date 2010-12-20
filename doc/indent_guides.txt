@@ -1,4 +1,4 @@
-*indent_guides.txt*  A plugin for visually displaying indent levels in gvim.
+*indent_guides.txt*  A plugin for visually displaying indent levels in vim.
 
                                                                  *indent-guides*
       ____           __            __     ______       _      __
@@ -9,8 +9,8 @@
 
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
-Version:     1.0
-Last Change: 12 Dec 2010
+Version:     1.1
+Last Change: 20 Dec 2010
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -26,12 +26,13 @@ CONTENTS                                                *indent-guides-contents*
 ==============================================================================
 1. INTRODUCTION                                     *indent-guides-introduction*
 
-Indent Guides is a plugin for visually displaying indent levels in gvim.
+Indent Guides is a plugin for visually displaying indent levels in vim.
 
 Features:~
   * Can detect both tab and space indent styles.
   * Automatically inspects your colorscheme and picks appropriate colors.
   * Will highlight indent levels with alternating colors.
+  * Supports both gvim and terminal vim.
 
 Note:~
 This plugin only works with gvim at the moment. Support for terminal vim is
@@ -75,10 +76,11 @@ Default: 1. Values: 0 or 1.
   let g:indent_guides_auto_colors = 1
 <
 
-If you set this option to 0, be sure to manually define some highlight colors.
+If you set this option to 0, be sure to manually define some highlight colors
+in an autocmd.
 >
-  hi IndentGuidesOdd  guibg=#EEEEEE
-  hi IndentGuidesEven guibg=#CCCCCC
+  autocmd VimEnter * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+  autocmd VimEnter * :hi IndentGuidesEven guibg=green ctermbg=4
 <
 
 ------------------------------------------------------------------------------
@@ -128,6 +130,9 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 ==============================================================================
 6. CHANGELOG                                           *indent-guides-changelog*
+
+1.1~
+  * Added support for terminal vim.
 
 1.0~
   * First public version.
