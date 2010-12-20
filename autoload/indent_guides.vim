@@ -32,11 +32,8 @@ endfunction
 "
 function! indent_guides#enable()
   let g:indent_guides_autocmds_enabled = 1
+  call indent_guides#highlight_colors()
   call indent_guides#clear_matches()
-
-  if g:indent_guides_auto_colors
-    call indent_guides#highlight_colors()
-  endif
 
   " loop through each indent level and define a highlight pattern
   " will automagically figure out whether to use tabs or spaces
@@ -80,32 +77,69 @@ endfunction
 " Automagically calculates and defines the indent highlight colors.
 "
 function! indent_guides#highlight_colors()
+  " define default highlights
+  exe 'hi IndentGuidesOdd  guibg=lightgrey ctermbg=1'
+  exe 'hi IndentGuidesEven guibg=darkgrey  ctermbg=0'
+
   if g:indent_guides_auto_colors
-    let hi_normal       = indent_guides#capture_highlight('normal')
-    let hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
-    let name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
-    let hi_normal_guibg = ''
-
-    " capture the backgroud color from the normal highlight
-    if hi_normal =~ hex_pattern
-      " hex color code is being used, eg. '#FFFFFF'
-      let hi_normal_guibg = matchstr(hi_normal, hex_pattern)
-    elseif hi_normal =~ name_pattern
-      " color name is being used, eg. 'white'
-      let color_name      = matchstr(hi_normal, name_pattern)
-      let hi_normal_guibg = color_helper#color_name_to_hex(color_name)
+    if has('gui_running')
+      call indent_guides#gui_highlight_colors()
+    else
+      call indent_guides#cterm_highlight_colors()
     endif
-
-    if hi_normal_guibg =~ g:indent_guides_hex_color_pattern
-      " calculate the highlight background colors
-      let hi_odd_bg  = indent_guides#lighten_or_darken_color(hi_normal_guibg)
-      let hi_even_bg = indent_guides#lighten_or_darken_color(hi_odd_bg)
-
-      " define the new highlights
-      exe 'hi IndentGuidesOdd  guibg=' . hi_odd_bg
-      exe 'hi IndentGuidesEven guibg=' . hi_even_bg
-    end
   endif
+endfunction
+
+"
+" Automagically calculates and defines the indent highlight colors for
+" terminal vim.
+"
+function! indent_guides#cterm_highlight_colors()
+  let hi_search = indent_guides#capture_highlight('search')
+  let pattern   = "ctermbg=\\zs[0-9A-Za-z]\\+\\ze"
+  let hi_search_ctermbg = ''
+
+  " capture the backgroud color from the search highlight
+  if hi_search =~ pattern
+    let hi_search_ctermbg = matchstr(hi_search, pattern)
+  endif
+
+  if hi_search_ctermbg =~ "[0-9A-Za-z]\\+"
+    " define the new highlights
+    exe 'hi IndentGuidesOdd  ctermbg=none'
+    exe 'hi IndentGuidesEven ctermbg=' . hi_search_ctermbg
+  end
+endfunction
+
+"
+" Automagically calculates and defines the indent highlight colors for gui
+" vim.
+"
+function! indent_guides#gui_highlight_colors()
+  let hi_normal       = indent_guides#capture_highlight('normal')
+  let hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
+  let name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
+  let hi_normal_guibg = ''
+
+  " capture the backgroud color from the normal highlight
+  if hi_normal =~ hex_pattern
+    " hex color code is being used, eg. '#FFFFFF'
+    let hi_normal_guibg = matchstr(hi_normal, hex_pattern)
+  elseif hi_normal =~ name_pattern
+    " color name is being used, eg. 'white'
+    let color_name      = matchstr(hi_normal, name_pattern)
+    let hi_normal_guibg = color_helper#color_name_to_hex(color_name)
+  endif
+
+  if hi_normal_guibg =~ g:indent_guides_hex_color_pattern
+    " calculate the highlight background colors
+    let hi_odd_bg  = indent_guides#lighten_or_darken_color(hi_normal_guibg)
+    let hi_even_bg = indent_guides#lighten_or_darken_color(hi_odd_bg)
+
+    " define the new highlights
+    exe 'hi IndentGuidesOdd  guibg=' . hi_odd_bg
+    exe 'hi IndentGuidesEven guibg=' . hi_even_bg
+  end
 endfunction
 
 "
