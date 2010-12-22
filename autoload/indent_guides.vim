@@ -91,23 +91,14 @@ endfunction
 " terminal vim.
 "
 function! indent_guides#cterm_highlight_colors()
-  let hi_search         = indent_guides#capture_highlight('Search')
-  let ctermfg_pattern   = "ctermfg=\\zs[0-9A-Za-z]\\+\\ze"
-  let ctermbg_pattern   = "ctermbg=\\zs[0-9A-Za-z]\\+\\ze"
-  let hi_search_ctermfg = ''
+  let hi_search         = indent_guides#capture_highlight('Normal')
+  let ctermbg_pattern   = "ctermbg=\\zs[0-9]\\+\\ze"
   let hi_search_ctermbg = ''
 
-  " capture the foreground color from the search highlight
-  if hi_search =~ ctermfg_pattern
-    let hi_search_ctermfg = matchstr(hi_search, ctermfg_pattern)
-    exe 'hi IndentGuidesOdd ctermbg=' . hi_search_ctermfg
-  endif
-
   " capture the background color from the search highlight
-  if hi_search =~ ctermbg_pattern
-    let hi_search_ctermbg = matchstr(hi_search, ctermbg_pattern)
-    exe 'hi IndentGuidesEven ctermbg=' . hi_search_ctermbg
-  endif
+  let hi_search_ctermbg = matchstr(hi_search, ctermbg_pattern)
+  exe 'hi IndentGuidesEven ctermbg=' . (hi_search_ctermbg + 1)
+  exe 'hi IndentGuidesOdd ctermbg=' . (hi_search_ctermbg + 2)
 endfunction
 
 "
