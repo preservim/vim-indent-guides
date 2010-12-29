@@ -10,18 +10,19 @@
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
 Version:     1.1
-Last Change: 20 Dec 2010
+Last Change: 29 Dec 2010
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
 
-  1. Introduction.............................. |indent-guides-introduction|
-  2. Commands.................................. |indent-guides-commands|
-  3. Options................................... |indent-guides-options|
-  4. Mappings.................................. |indent-guides-mappings|
-  5. About..................................... |indent-guides-about|
-  6. Changelog................................. |indent-guides-changelog|
-  7. License................................... |indent-guides-license|
+  1. Introduction.......................... |indent-guides-introduction|
+  2. Commands.............................. |indent-guides-commands|
+  3. Options............................... |indent-guides-options|
+  4. Mappings.............................. |indent-guides-mappings|
+  5. Terminal Vim.......................... |indent-guides-terminal-vim|
+  6. About................................. |indent-guides-about|
+  7. Changelog............................. |indent-guides-changelog|
+  8. License............................... |indent-guides-license|
 
 ==============================================================================
 1. INTRODUCTION                                     *indent-guides-introduction*
@@ -30,13 +31,10 @@ Indent Guides is a plugin for visually displaying indent levels in vim.
 
 Features:~
   * Can detect both tab and space indent styles.
-  * Automatically inspects your colorscheme and picks appropriate colors.
+  * Automatically inspects your colorscheme and picks appropriate colors (gvim
+    only).
   * Will highlight indent levels with alternating colors.
-  * Supports both gvim and terminal vim.
-
-Note:~
-This plugin only works with gvim at the moment. Support for terminal vim is
-planned for a future release.
+  * Full support for gvim and basic support for terminal vim.
 
 ==============================================================================
 2. COMMANDS                                             *indent-guides-commands*
@@ -79,8 +77,9 @@ Default: 1. Values: 0 or 1.
 If you set this option to 0, be sure to manually define some highlight colors
 in an autocmd.
 >
-  autocmd VimEnter * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-  autocmd VimEnter * :hi IndentGuidesEven guibg=green ctermbg=4
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 <
 
 ------------------------------------------------------------------------------
@@ -109,7 +108,41 @@ example:
 <
 
 ==============================================================================
-5. ABOUT                                                   *indent-guides-about*
+5. TERMINAL VIM                                     *indent-guides-terminal-vim*
+
+At the moment Terminal Vim only has basic support. This means is that colors
+won't be automatically calculated based on your colorscheme. Instead some
+preset colors are used depending on whether `set background=` is set to `dark`
+or `light`.
+
+When `set background=dark` is used, the following highlight colors will be
+defined:
+>
+  hi IndentGuidesEven ctermbg=darkgrey
+  hi IndentGuidesOdd  ctermbg=black
+<
+
+When `set background=light` is used, the following highlight colors will be
+defined:
+>
+  hi IndentGuidesEven ctermbg=lightgrey
+  hi IndentGuidesOdd  ctermbg=white
+<
+
+If for some reason it's defining light highlight colors instead of dark ones
+or vice versa, the first thing you should check is that `set background=` is
+being set correctly for your colorscheme. Sometimes it's best to manually set
+the `background` value in your .vimrc, for example:
+>
+  colorscheme desert256
+  set background=dark
+<
+
+Alternatively you can manually setup the highlight colors yourself, see
+|indent_guides_auto_colors| for an example.
+
+==============================================================================
+6. ABOUT                                                   *indent-guides-about*
 
 Why did I build this plugin?~
   * I believe indent guides make nested code easier to read and understand.
@@ -121,6 +154,10 @@ Links:~
   * Github:        https://github.com/nathanaelkane/vim-indent-guides
   * Bugs & Issues: https://github.com/nathanaelkane/vim-indent-guides/issues
 
+Credits:~
+  * Matt Wozniski (godlygeek) for letting me use the list of color names and
+    hex codes from his CSApprox plugin.
+
 Contact:~
   * Twitter: @nathanaelkane
   * Email:   <nathanaelkane AT gmail DOT com>
@@ -129,16 +166,20 @@ Contact:~
 Bug reports, feedback, suggestions etc are welcomed.
 
 ==============================================================================
-6. CHANGELOG                                           *indent-guides-changelog*
+7. CHANGELOG                                           *indent-guides-changelog*
 
 1.1~
-  * Added support for terminal vim.
+  * Added basic support for terminal vim. See |indent-guides-terminal-vim| for
+    more information.
+  * Cut down on rgb to hex color conversions by adding a big dictionary of
+    color names and hex codes.
+  * Various bug fixes.
 
 1.0~
   * First public version.
 
 ==============================================================================
-7. LICENSE                                               *indent-guides-license*
+8. LICENSE                                               *indent-guides-license*
 
 The MIT Licence
 http://www.opensource.org/licenses/mit-license.php

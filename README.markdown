@@ -3,9 +3,9 @@ Indent Guides is a plugin for visually displaying indent levels in vim.
 
 ## Features:
 * Can detect both tab and space indent styles.
-* Automatically inspects your colorscheme and picks appropriate colors.
+* Automatically inspects your colorscheme and picks appropriate colors (gvim only).
 * Will highlight indent levels with alternating colors.
-* Supports both gvim and terminal vim.
+* Full support for gvim and basic support for terminal vim.
 
 ## Requirements
 * vim 7.2+
@@ -20,6 +20,26 @@ Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?scrip
 
 ## Usage
 The default mapping to toggle the plugin is `<Leader>ig`
+
+### Terminal Vim
+At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead some preset colors are used depending on whether `set background=` is set to `dark` or `light`.
+
+When `set background=dark` is used, the following highlight colors will be defined:
+
+    hi IndentGuidesEven ctermbg=darkgrey
+    hi IndentGuidesOdd  ctermbg=black
+
+When `set background=light` is used, the following highlight colors will be defined:
+
+    hi IndentGuidesEven ctermbg=lightgrey
+    hi IndentGuidesOdd  ctermbg=white
+
+If for some reason it's defining light highlight colors instead of dark ones or vice versa, the first thing you should check is that `set background=` is being set correctly for your colorscheme. Sometimes it's best to manually set the `background` value in your .vimrc, for example:
+
+    colorscheme desert256
+    set background=dark
+
+Alternatively you can manually setup the highlight colors yourself, see `:help indent_guides_auto_colors` for an example.
 
 ## Help
 `:help indent-guides`
