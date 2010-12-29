@@ -11,9 +11,9 @@ Indent Guides is a plugin for visually displaying indent levels in vim.
 * vim 7.2+
 
 ## Installation
-To install the plugin just copy `autoload`, `plugin`, `doc` directories into your .vim directory.
+To install the plugin just copy `autoload`, `plugin`, `doc` directories into your `.vim` directory.
 
-Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, just clone this repo into a subdirectory of your .vim/bundle directory like so:
+Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, just clone this repo into a subdirectory of your `.vim/bundle` directory like so:
 
     cd ~/.vim/bundle
     git clone git://github.com/nathanaelkane/vim-indent-guides.git
