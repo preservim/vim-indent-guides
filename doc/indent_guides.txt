@@ -35,7 +35,8 @@ Features:~
     only).
   * Will highlight indent levels with alternating colors.
   * Full support for gvim and basic support for terminal vim.
-  * Seems to work on Windows gvim 7.3 (haven't done any extensive tests though).
+  * Seems to work on Windows gvim 7.3 (haven't done any extensive tests
+    though).
 
 ==============================================================================
 2. COMMANDS                                             *indent-guides-commands*
