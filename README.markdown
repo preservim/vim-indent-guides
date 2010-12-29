@@ -22,26 +22,26 @@ Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?scrip
 The default mapping to toggle the plugin is `<Leader>ig`
 
 ### Setting custom indent colors
-Here's an example of how to use custom colors instead of the ones the plugin automatically generates for you. Add this to your `.vimrc` file:
+Here's an example of how to define custom colors instead using of the ones the plugin automatically generates for you. Add this to your `.vimrc` file:
 
     let g:indent_guides_auto_colors = 0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 ### Terminal Vim
-At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead some preset colors are used depending on whether `set background=` is set to `dark` or `light`.
+At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead, some preset colors are used depending on whether `background` is set to `dark` or `light`.
 
 When `set background=dark` is used, the following highlight colors will be defined:
 
     hi IndentGuidesEven ctermbg=darkgrey
     hi IndentGuidesOdd  ctermbg=black
 
-When `set background=light` is used, the following highlight colors will be defined:
+Alternatively, when `set background=light` is used, the following highlight colors will be defined:
 
     hi IndentGuidesEven ctermbg=lightgrey
     hi IndentGuidesOdd  ctermbg=white
 
-If for some reason it's defining light highlight colors instead of dark ones or vice versa, the first thing you should check is that `set background=` is being set correctly for your colorscheme. Sometimes it's best to manually set the `background` value in your `.vimrc`, for example:
+If for some reason it's incorrectly defining light highlight colors instead of dark ones or vice versa, the first thing you should check is that the `background` value is being set correctly for your colorscheme. Sometimes it's best to manually set the `background` value in your `.vimrc`, for example:
 
     colorscheme desert256
     set background=dark

@@ -111,9 +111,9 @@ example:
 5. TERMINAL VIM                                     *indent-guides-terminal-vim*
 
 At the moment Terminal Vim only has basic support. This means is that colors
-won't be automatically calculated based on your colorscheme. Instead some
-preset colors are used depending on whether `set background=` is set to `dark`
-or `light`.
+won't be automatically calculated based on your colorscheme. Instead, some
+preset colors are used depending on whether `background` is set to `dark` or
+`light`.
 
 When `set background=dark` is used, the following highlight colors will be
 defined:
@@ -122,17 +122,17 @@ defined:
   hi IndentGuidesOdd  ctermbg=black
 <
 
-When `set background=light` is used, the following highlight colors will be
-defined:
+Alternatively, when `set background=light` is used, the following highlight
+colors will be defined:
 >
   hi IndentGuidesEven ctermbg=lightgrey
   hi IndentGuidesOdd  ctermbg=white
 <
 
-If for some reason it's defining light highlight colors instead of dark ones
-or vice versa, the first thing you should check is that `set background=` is
-being set correctly for your colorscheme. Sometimes it's best to manually set
-the `background` value in your .vimrc, for example:
+If for some reason it's incorrectly defining light highlight colors instead of
+dark ones or vice versa, the first thing you should check is that the
+`background` value is being set correctly for your colorscheme. Sometimes it's
+best to manually set the `background` value in your `.vimrc`, for example:
 >
   colorscheme desert256
   set background=dark
