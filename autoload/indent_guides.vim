@@ -37,15 +37,15 @@ function! indent_guides#enable()
 
   " loop through each indent level and define a highlight pattern
   " will automagically figure out whether to use tabs or spaces
-  for level in range(1, g:indent_guides_indent_levels)
-    let group      = 'IndentGuides' . ((level % 2 == 0) ? 'Even' : 'Odd')
-    let multiplier = (&l:expandtab == 1) ? &l:shiftwidth : 1
-    let pattern    = '^\s\{' . (level * multiplier - multiplier) . '\}\zs'
-    let pattern   .= '\s\{' . multiplier . '\}'
-    let pattern   .= '\ze'
+  for l:level in range(1, g:indent_guides_indent_levels)
+    let l:group      = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
+    let l:multiplier = (&l:expandtab == 1) ? &l:shiftwidth : 1
+    let l:pattern    = '^\s\{' . (l:level * l:multiplier - l:multiplier) . '\}\zs'
+    let l:pattern   .= '\s\{' . l:multiplier . '\}'
+    let l:pattern   .= '\ze'
 
     " define the higlight pattern and add to list
-    call add(w:indent_guides_matches, matchadd(group, pattern))
+    call add(w:indent_guides_matches, matchadd(l:group, l:pattern))
   endfor
 endfunction
 
@@ -64,11 +64,11 @@ endfunction
 function! indent_guides#clear_matches()
   call indent_guides#init_matches()
   if !empty(w:indent_guides_matches)
-    let index = 0
-    for match_id in w:indent_guides_matches
-      call matchdelete(match_id)
-      call remove(w:indent_guides_matches, index)
-      let index += index
+    let l:index = 0
+    for l:match_id in w:indent_guides_matches
+      call matchdelete(l:match_id)
+      call remove(w:indent_guides_matches, l:index)
+      let l:index += l:index
     endfor
   endif
 endfunction
@@ -105,29 +105,29 @@ endfunction
 " vim.
 "
 function! indent_guides#gui_highlight_colors()
-  let hi_normal       = indent_guides#capture_highlight('Normal')
-  let hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
-  let name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
-  let hi_normal_guibg = ''
+  let l:hi_normal       = indent_guides#capture_highlight('Normal')
+  let l:hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
+  let l:name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
+  let l:hi_normal_guibg = ''
 
   " capture the backgroud color from the normal highlight
-  if hi_normal =~ hex_pattern
+  if l:hi_normal =~ l:hex_pattern
     " hex color code is being used, eg. '#FFFFFF'
-    let hi_normal_guibg = matchstr(hi_normal, hex_pattern)
-  elseif hi_normal =~ name_pattern
+    let l:hi_normal_guibg = matchstr(l:hi_normal, l:hex_pattern)
+  elseif l:hi_normal =~ l:name_pattern
     " color name is being used, eg. 'white'
-    let color_name      = matchstr(hi_normal, name_pattern)
-    let hi_normal_guibg = color_helper#color_name_to_hex(color_name)
+    let l:color_name      = matchstr(l:hi_normal, l:name_pattern)
+    let l:hi_normal_guibg = color_helper#color_name_to_hex(l:color_name)
   endif
 
-  if hi_normal_guibg =~ g:indent_guides_hex_color_pattern
+  if l:hi_normal_guibg =~ g:indent_guides_hex_color_pattern
     " calculate the highlight background colors
-    let hi_odd_bg  = indent_guides#lighten_or_darken_color(hi_normal_guibg)
-    let hi_even_bg = indent_guides#lighten_or_darken_color(hi_odd_bg)
+    let l:hi_odd_bg  = indent_guides#lighten_or_darken_color(l:hi_normal_guibg)
+    let l:hi_even_bg = indent_guides#lighten_or_darken_color(l:hi_odd_bg)
 
     " define the new highlights
-    exe 'hi IndentGuidesOdd  guibg=' . hi_odd_bg
-    exe 'hi IndentGuidesEven guibg=' . hi_even_bg
+    exe 'hi IndentGuidesOdd  guibg=' . l:hi_odd_bg
+    exe 'hi IndentGuidesEven guibg=' . l:hi_even_bg
   end
 endfunction
 
@@ -136,13 +136,13 @@ endfunction
 " colorscheme is being used.
 "
 function! indent_guides#lighten_or_darken_color(color)
-  let percent = g:indent_guides_color_change_percent
+  let l:percent = g:indent_guides_color_change_percent
 
-  let new_color = (&g:background == 'dark') ?
-    \ color_helper#hex_color_lighten(a:color, percent) :
-    \ color_helper#hex_color_darken (a:color, percent)
+  let l:new_color = (&g:background == 'dark') ?
+    \ color_helper#hex_color_lighten(a:color, l:percent) :
+    \ color_helper#hex_color_darken (a:color, l:percent)
 
-  return new_color
+  return l:new_color
 endfunction
 
 "
@@ -152,11 +152,11 @@ endfunction
 " Returns: 'Normal xxx guifg=#323232 guibg=#ffffff
 "
 function! indent_guides#capture_highlight(group_name)
-  redir => output
+  redir => l:output
   exe "silent hi " . a:group_name
   redir END
 
-  return output
+  return l:output
 endfunction
 
 "
