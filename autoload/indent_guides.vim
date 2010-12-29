@@ -87,17 +87,17 @@ function! indent_guides#highlight_colors()
 endfunction
 
 "
-" Automagically calculates and defines the indent highlight colors for
-" terminal vim.
+" Defines the indent highlight colors for terminal vim.
+"
+" NOTE: This function contains no magic at the moment, it will simply use some
+" light or dark preset colors depending on the `set background=` value.
 "
 function! indent_guides#cterm_highlight_colors()
-  if &g:background == 'dark'
-    exe 'hi IndentGuidesEven ctermbg=darkgrey'
-    exe 'hi IndentGuidesOdd  ctermbg=black'
-  else
-    exe 'hi IndentGuidesEven ctermbg=lightgrey'
-    exe 'hi IndentGuidesOdd  ctermbg=white'
-  endif
+  let l:colors = (&g:background == 'dark') ?
+    \ ['darkgrey', 'black'] : ['lightgrey', 'white']
+
+  exe 'hi IndentGuidesEven ctermbg=' . l:colors[0]
+  exe 'hi IndentGuidesOdd  ctermbg=' . l:colors[1]
 endfunction
 
 "
