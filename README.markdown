@@ -23,7 +23,7 @@ Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?scrip
 The default mapping to toggle the plugin is `<Leader>ig`
 
 ### Setting custom indent colors
-Here's an example of how to define custom colors instead using of the ones the plugin automatically generates for you. Add this to your `.vimrc` file:
+Here's an example of how to define custom colors instead of using the ones the plugin automatically generates for you. Add this to your `.vimrc` file:
 
     let g:indent_guides_auto_colors = 0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
