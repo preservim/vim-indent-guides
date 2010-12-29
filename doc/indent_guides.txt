@@ -1,4 +1,4 @@
-*indent_guides.txt*  A plugin for visually displaying indent levels in vim.
+*indent_guides.txt*  A plugin for visually displaying indent levels in Vim.
 
                                                                  *indent-guides*
       ____           __            __     ______       _      __
@@ -27,15 +27,17 @@ CONTENTS                                                *indent-guides-contents*
 ==============================================================================
 1. INTRODUCTION                                     *indent-guides-introduction*
 
-Indent Guides is a plugin for visually displaying indent levels in vim.
+Indent Guides is a plugin for visually displaying indent levels in Vim.
+
+This plugin should work with gVim out of the box, no configuration needed.
 
 Features:~
   * Can detect both tab and space indent styles.
-  * Automatically inspects your colorscheme and picks appropriate colors (gvim
+  * Automatically inspects your colorscheme and picks appropriate colors (gVim
     only).
   * Will highlight indent levels with alternating colors.
-  * Full support for gvim and basic support for terminal vim.
-  * Seems to work on Windows gvim 7.3 (haven't done any extensive tests
+  * Full support for gVim and basic support for terminal Vim.
+  * Seems to work on Windows gVim 7.3 (haven't done any extensive tests
     though).
 
 ==============================================================================
@@ -148,7 +150,7 @@ Alternatively you can manually setup the highlight colors yourself, see
 
 Why did I build this plugin?~
   * I believe indent guides make nested code easier to read and understand.
-  * Other editors have them and it's high time vim did.
+  * Other editors have them and it's high time Vim did.
   * None of the existing indent guide plugins on the market suited my needs.
   * I wanted to learn me some VimL.
 
@@ -171,7 +173,7 @@ Bug reports, feedback, suggestions etc are welcomed.
 7. CHANGELOG                                           *indent-guides-changelog*
 
 1.1~
-  * Added basic support for terminal vim. See |indent-guides-terminal-vim| for
+  * Added basic support for Terminal Vim. See |indent-guides-terminal-vim| for
     more information.
   * Cut down on rgb to hex color conversions by adding a big dictionary of
     color names and hex codes.
