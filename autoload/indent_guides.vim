@@ -90,19 +90,14 @@ endfunction
 " Automagically calculates and defines the indent highlight colors for
 " terminal vim.
 "
-" NOTE: At the moment this function only supports color numbers and not names.
-" For example, `:hi Normal` containing `ctermbg=0` will work, but
-" `ctermbg=DarkGrey` will not.
-"
 function! indent_guides#cterm_highlight_colors()
-  let hi_normal         = indent_guides#capture_highlight('Normal')
-  let ctermbg_pattern   = "ctermbg=\\zs[0-9]\\+\\ze"
-  let hi_normal_ctermbg = ''
-
-  " capture the background color from the normal highlight
-  let hi_normal_ctermbg = matchstr(hi_normal, ctermbg_pattern)
-  exe 'hi IndentGuidesEven ctermbg=' . (hi_normal_ctermbg + 1)
-  exe 'hi IndentGuidesOdd  ctermbg=' . (hi_normal_ctermbg + 2)
+  if &g:background == 'dark'
+    exe 'hi IndentGuidesEven ctermbg=darkgrey'
+    exe 'hi IndentGuidesOdd  ctermbg=black'
+  else
+    exe 'hi IndentGuidesEven ctermbg=lightgrey'
+    exe 'hi IndentGuidesOdd  ctermbg=white'
+  endif
 endfunction
 
 "
