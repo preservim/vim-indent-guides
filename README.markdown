@@ -5,7 +5,7 @@ Indent Guides is a plugin for visually displaying indent levels in Vim.
 * Can detect both tab and space indent styles.
 * Automatically inspects your colorscheme and picks appropriate colors (gVim only).
 * Will highlight indent levels with alternating colors.
-* Full support for gVim and basic support for terminal Vim.
+* Full support for gVim and basic support for Terminal Vim.
 * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
 
 ## Requirements
