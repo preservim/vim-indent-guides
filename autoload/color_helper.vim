@@ -39,7 +39,7 @@ endfunction
 function! color_helper#hex_color_to_rgb(hex_color)
   let l:rgb = []
 
-  if a:hex_color =~ g:indent_guides_hex_color_pattern
+  if a:hex_color =~ g:indent_guides_color_hex_pattern
     let l:red   = color_helper#hex_to_dec(strpart(a:hex_color, 1, 2))
     let l:green = color_helper#hex_to_dec(strpart(a:hex_color, 3, 2))
     let l:blue  = color_helper#hex_to_dec(strpart(a:hex_color, 5, 2))

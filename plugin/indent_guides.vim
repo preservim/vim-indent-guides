@@ -24,34 +24,32 @@ command! IndentGuidesToggle  call s:IndentGuidesToggle()
 command! IndentGuidesEnable  call s:IndentGuidesEnable()
 command! IndentGuidesDisable call s:IndentGuidesDisable()
 
-" Default options
-let g:indent_guides_indent_levels =
-  \ exists('g:indent_guides_indent_levels') ?
-  \ g:indent_guides_indent_levels : 30
-
-let g:indent_guides_auto_colors =
-  \ exists('g:indent_guides_auto_colors') ?
-  \ g:indent_guides_auto_colors : 1
-
-let g:indent_guides_color_change_percent =
-  \ exists('g:indent_guides_color_change_percent') ?
-  \ g:indent_guides_color_change_percent : 0.05
-
-let g:indent_guides_debug =
-  \ exists('g:indent_guides_debug') ?
-  \ g:indent_guides_debug : 0
-
-let g:indent_guides_autocmds_enabled = 0
-
 "
-" Regex pattern for a hex color.
+" Initializes a given variable to a given value. The variable is only
+" initialized if it does not exist prior.
 "
-" Example matches:
-" - '#123ABC'
-" - '#ffffff'
-" - '#000000'
-"
-let g:indent_guides_hex_color_pattern = '#[0-9A-Fa-f]\{6\}'
+function s:InitVariable(var, value)
+  if !exists(a:var)
+    if type(a:var) == type("")
+      exec 'let ' . a:var . ' = ' . "'" . a:value . "'"
+    else
+      exec 'let ' . a:var . ' = ' .  a:value
+    endif
+  endif
+endfunction
+
+" Fixed global variables
+let g:indent_guides_autocmds_enabled         = 0
+let g:indent_guides_color_hex_pattern        = '#[0-9A-Fa-f]\{6\}'
+let g:indent_guides_color_hex_guibg_pattern  = 'guibg=\zs' . g:indent_guides_color_hex_pattern . '\ze'
+let g:indent_guides_color_name_guibg_pattern = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
+
+" Configurable global variables
+call s:InitVariable('g:indent_guides_indent_levels',        30)
+call s:InitVariable('g:indent_guides_auto_colors',          1 )
+call s:InitVariable('g:indent_guides_color_change_percent', 5 ) " ie. 5%
+call s:InitVariable('g:indent_guides_indent_guide_size',    0 )
+call s:InitVariable('g:indent_guides_debug',                0 )
 
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>
