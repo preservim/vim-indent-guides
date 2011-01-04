@@ -32,6 +32,8 @@ endfunction
 "
 function! indent_guides#enable()
   let g:indent_guides_autocmds_enabled = 1
+
+  call indent_guides#init_buffer_vars()
   call indent_guides#highlight_colors()
   call indent_guides#clear_matches()
 
@@ -39,9 +41,8 @@ function! indent_guides#enable()
   " will automagically figure out whether to use tabs or spaces
   for l:level in range(1, g:indent_guides_indent_levels)
     let l:group      = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
-    let l:multiplier = (&l:expandtab == 1) ? &l:shiftwidth : 1
-    let l:pattern    = '^\s\{' . (l:level * l:multiplier - l:multiplier) . '\}\zs'
-    let l:pattern   .= '\s\{' . l:multiplier . '\}'
+    let l:pattern    = '^\s\{' . (l:level * b:indent_size - b:indent_size) . '\}\zs'
+    let l:pattern   .= '\s\{' . b:guide_size . '\}'
     let l:pattern   .= '\ze'
 
     " define the higlight pattern and add to list
@@ -93,8 +94,7 @@ endfunction
 " light or dark preset colors depending on the `set background=` value.
 "
 function! indent_guides#cterm_highlight_colors()
-  let l:colors = (&g:background == 'dark') ?
-    \ ['darkgrey', 'black'] : ['lightgrey', 'white']
+  let l:colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
 
   exe 'hi IndentGuidesEven ctermbg=' . l:colors[0]
   exe 'hi IndentGuidesOdd  ctermbg=' . l:colors[1]
@@ -105,22 +105,20 @@ endfunction
 " vim.
 "
 function! indent_guides#gui_highlight_colors()
-  let l:hi_normal       = indent_guides#capture_highlight('Normal')
-  let l:hex_pattern     = 'guibg=\zs'. g:indent_guides_hex_color_pattern . '\ze'
-  let l:name_pattern    = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
   let l:hi_normal_guibg = ''
 
   " capture the backgroud color from the normal highlight
-  if l:hi_normal =~ l:hex_pattern
+  if b:hi_normal =~ g:indent_guides_color_hex_guibg_pattern
     " hex color code is being used, eg. '#FFFFFF'
-    let l:hi_normal_guibg = matchstr(l:hi_normal, l:hex_pattern)
-  elseif l:hi_normal =~ l:name_pattern
+    let l:hi_normal_guibg = matchstr(b:hi_normal, g:indent_guides_color_hex_guibg_pattern)
+
+  elseif b:hi_normal =~ g:indent_guides_color_name_guibg_pattern
     " color name is being used, eg. 'white'
-    let l:color_name      = matchstr(l:hi_normal, l:name_pattern)
+    let l:color_name = matchstr(b:hi_normal, g:indent_guides_color_name_guibg_pattern)
     let l:hi_normal_guibg = color_helper#color_name_to_hex(l:color_name)
   endif
 
-  if l:hi_normal_guibg =~ g:indent_guides_hex_color_pattern
+  if l:hi_normal_guibg =~ g:indent_guides_color_hex_pattern
     " calculate the highlight background colors
     let l:hi_odd_bg  = indent_guides#lighten_or_darken_color(l:hi_normal_guibg)
     let l:hi_even_bg = indent_guides#lighten_or_darken_color(l:hi_odd_bg)
@@ -136,13 +134,68 @@ endfunction
 " colorscheme is being used.
 "
 function! indent_guides#lighten_or_darken_color(color)
-  let l:percent = g:indent_guides_color_change_percent
+  let l:new_color = ''
+  let l:percent   = g:indent_guides_color_change_percent / 100.0
 
-  let l:new_color = (&g:background == 'dark') ?
-    \ color_helper#hex_color_lighten(a:color, l:percent) :
-    \ color_helper#hex_color_darken (a:color, l:percent)
+  if (&g:background == 'dark')
+    let l:new_color = color_helper#hex_color_lighten(a:color, l:percent)
+  else
+    let l:new_color = color_helper#hex_color_darken (a:color, l:percent)
+  endif
 
   return l:new_color
+endfunction
+
+"
+" Define default highlights.
+"
+function! indent_guides#define_default_highlights()
+  exe 'hi IndentGuidesOdd  guibg=NONE ctermbg=NONE'
+  exe 'hi IndentGuidesEven guibg=NONE ctermbg=NONE'
+endfunction
+
+"
+" Init the w:indent_guides_matches variable.
+"
+function! indent_guides#init_matches()
+  let w:indent_guides_matches = exists('w:indent_guides_matches') ? w:indent_guides_matches : []
+endfunction
+
+"
+" We need to initialize these vars every time a buffer is entered while the
+" plugin is enabled.
+"
+function! indent_guides#init_buffer_vars()
+  let b:indent_size = indent_guides#get_indent_size()
+  let b:guide_size  = indent_guides#calculate_guide_size()
+  let b:hi_normal   = indent_guides#capture_highlight('Normal')
+endfunction
+
+"
+" Calculate the indent guide size. Ensures the guide size is less than or
+" equal to the actual indent size, otherwise some weird things can occur.
+"
+" NOTE: Currently, this only works when soft-tabs are being used.
+"
+function! indent_guides#calculate_guide_size()
+  let l:guide_size  = g:indent_guides_indent_guide_size
+  let l:indent_size = indent_guides#get_indent_size()
+
+  if l:indent_size > 1 && l:guide_size >= 1
+    let l:guide_size = (l:guide_size > b:indent_size) ? b:indent_size : l:guide_size
+  else
+    let l:guide_size = b:indent_size
+  endif
+
+  return l:guide_size
+endfunction
+
+"
+" Gets the indent size, which depends on whether soft-tabs or hard-tabs are
+" being used.
+"
+function! indent_guides#get_indent_size()
+  return (&l:expandtab == 1) ? &l:shiftwidth : 1
 endfunction
 
 "
@@ -157,21 +210,5 @@ function! indent_guides#capture_highlight(group_name)
   redir END
 
   return l:output
-endfunction
-
-"
-" Init the w:indent_guides_matches variable.
-"
-function! indent_guides#init_matches()
-  let w:indent_guides_matches =
-    \ exists('w:indent_guides_matches') ? w:indent_guides_matches : []
-endfunction
-
-"
-" Define default highlights.
-"
-function! indent_guides#define_default_highlights()
-  exe 'hi IndentGuidesOdd  guibg=NONE ctermbg=NONE'
-  exe 'hi IndentGuidesEven guibg=NONE ctermbg=NONE'
 endfunction
 
