@@ -9,8 +9,8 @@
 
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
-Version:     1.1
-Last Change: 29 Dec 2010
+Version:     1.2
+Last Change: 5 Jan 2011
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -39,6 +39,7 @@ Features:~
   * Full support for gVim and basic support for Terminal Vim.
   * Seems to work on Windows gVim 7.3 (haven't done any extensive tests
     though).
+  * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
 
 ==============================================================================
 2. COMMANDS                                             *indent-guides-commands*
@@ -63,6 +64,7 @@ Features:~
 ------------------------------------------------------------------------------
                                                  *'indent_guides_indent_levels'*
 Use this option to control how many indent levels to display guides for.
+
 Default: 30. Values: integer.
 >
   let g:indent_guides_indent_levels = 30
@@ -73,6 +75,7 @@ Default: 30. Values: integer.
 Use this option to control whether or not the plugin automatically calculates
 the highlight colors. Will use the current colorscheme's background color as a
 base color.
+
 Default: 1. Values: 0 or 1.
 >
   let g:indent_guides_auto_colors = 1
@@ -90,9 +93,27 @@ in an autocmd.
                                           *'indent_guides_color_change_percent'*
 Use this option to control the percent at which the highlight colors will be
 lightened or darkened.
+
 Default: 0.05. Values: between 0 and 1.
 >
   let g:indent_guides_color_change_percent = 0.05
+<
+
+------------------------------------------------------------------------------
+                                             *'indent_guides_indent_guide_size'*
+Use this option to customize the size of the indent guide. By default the
+value is set to 0, which will set the guide size to be the same as the
+|shiftwidth|. Setting this value to be larger than the |shiftwidth| is essentially
+the same as setting it to 0.
+
+A common use of this setting is to create skinny indent guides, which look
+great with a |shiftwidth| of 4 or more.
+
+NOTE: This option only works for soft-tabs (spaces) and not for hard-tabs.
+
+Default: 0. Values: between 0 and |shiftwidth|.
+>
+  let g:indent_guides_indent_guide_size = 1
 <
 
 ==============================================================================
@@ -172,6 +193,9 @@ Bug reports, feedback, suggestions etc are welcomed.
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
 
+1.2~
+  * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+  * Refactored some internal logic.
 1.1~
   * Added basic support for Terminal Vim. See |indent-guides-terminal-vim| for
     more information.
