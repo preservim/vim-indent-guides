@@ -58,8 +58,8 @@ Alternatively you can manually setup the highlight colors yourself, see `:help i
 `:help indent-guides`
 
 ## Screenshots
-<img src="http://i.imgur.com/Q0a4X.png" width="450" height="450" alt="" />
-<img src="http://i.imgur.com/syVFw.png" width="450" height="450" alt="" />
-<img src="http://i.imgur.com/qVOqH.png" width="450" height="450" alt="" />
-<img src="http://i.imgur.com/xKBjO.png" width="450" height="450" alt="" />
+<img src="http://i.imgur.com/kGpSB.png" width="448" height="448" alt="" />
+<img src="http://i.imgur.com/5Y1H7.png" width="448" height="448" alt="" />
+<img src="http://i.imgur.com/mp2Cm.png" width="448" height="448" alt="" />
+<img src="http://i.imgur.com/0jCeF.png" width="448" height="448" alt="" />
 
