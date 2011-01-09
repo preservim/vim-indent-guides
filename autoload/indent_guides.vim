@@ -39,7 +39,7 @@ function! indent_guides#enable()
 
   " loop through each indent level and define a highlight pattern
   " will automagically figure out whether to use tabs or spaces
-  for l:level in range(1, s:indent_levels)
+  for l:level in range(s:start_level, s:indent_levels)
     let l:group      = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
     let l:pattern    = '^\s\{' . (l:level * s:indent_size - s:indent_size) . '\}\zs'
     let l:pattern   .= '\s\{' . s:guide_size . '\}'
@@ -177,6 +177,7 @@ function! indent_guides#init_script_vars()
   let s:color_hex_pat     = g:indent_guides_color_hex_pattern
   let s:color_hex_bg_pat  = g:indent_guides_color_hex_guibg_pattern
   let s:color_name_bg_pat = g:indent_guides_color_name_guibg_pattern
+  let s:start_level       = g:indent_guides_start_level
 
   if s:debug
     echo 's:indent_size = '       . s:indent_size
@@ -188,6 +189,7 @@ function! indent_guides#init_script_vars()
     echo 's:color_hex_pat = '     . s:color_hex_pat
     echo 's:color_hex_bg_pat = '  . s:color_hex_bg_pat
     echo 's:color_name_bg_pat = ' . s:color_name_bg_pat
+    echo 's:start_level = '       . s:start_level
   endif
 endfunction
 
@@ -198,7 +200,7 @@ endfunction
 " NOTE: Currently, this only works when soft-tabs are being used.
 "
 function! indent_guides#calculate_guide_size()
-  let l:guide_size  = g:indent_guides_indent_guide_size
+  let l:guide_size  = g:indent_guides_guide_size
   let l:indent_size = indent_guides#get_indent_size()
 
   if l:indent_size > 1 && l:guide_size >= 1
