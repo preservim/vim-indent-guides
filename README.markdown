@@ -8,6 +8,7 @@ Indent Guides is a plugin for visually displaying indent levels in Vim.
 * Full support for gVim and basic support for Terminal Vim.
 * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
 * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+* Customizable start indent level.
 
 ## Requirements
 * Vim 7.2+

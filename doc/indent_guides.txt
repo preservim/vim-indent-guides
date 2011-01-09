@@ -10,7 +10,7 @@
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
 Version:     1.2
-Last Change: 5 Jan 2011
+Last Change: 9 Jan 2011
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -40,6 +40,7 @@ Features:~
   * Seems to work on Windows gVim 7.3 (haven't done any extensive tests
     though).
   * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+  * Customizable start indent level.
 
 ==============================================================================
 2. COMMANDS                                             *indent-guides-commands*
@@ -94,13 +95,13 @@ in an autocmd.
 Use this option to control the percent at which the highlight colors will be
 lightened or darkened.
 
-Default: 0.05. Values: between 0 and 1.
+Default: 5 (5%). Values: between 0 and 100.
 >
-  let g:indent_guides_color_change_percent = 0.05
+  let g:indent_guides_color_change_percent = 5
 <
 
 ------------------------------------------------------------------------------
-                                             *'indent_guides_indent_guide_size'*
+                                                    *'indent_guides_guide_size'*
 Use this option to customize the size of the indent guide. By default the
 value is set to 0, which will set the guide size to be the same as the
 |shiftwidth|. Setting this value to be larger than the |shiftwidth| is essentially
@@ -109,11 +110,20 @@ the same as setting it to 0.
 A common use of this setting is to create skinny indent guides, which look
 great with a |shiftwidth| of 4 or more.
 
-NOTE: This option only works for soft-tabs (spaces) and not for hard-tabs.
+NOTE: This option only works for soft-tabs (spaces) and not hard-tabs.
 
 Default: 0. Values: between 0 and |shiftwidth|.
 >
-  let g:indent_guides_indent_guide_size = 1
+  let g:indent_guides_guide_size = 1
+<
+
+------------------------------------------------------------------------------
+                                                   *'indent_guides_start_level'*
+Use this option to control which indent level to start showing guides from.
+
+Default: 1. Values: between 1 and g:|indent_guides_indent_levels|.
+>
+  let g:indent_guides_start_level = 2
 <
 
 ==============================================================================
@@ -195,6 +205,7 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 1.2~
   * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+  * Customizable start indent level.
   * Refactored some internal logic.
 1.1~
   * Added basic support for Terminal Vim. See |indent-guides-terminal-vim| for
