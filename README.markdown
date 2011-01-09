@@ -58,8 +58,8 @@ Alternatively you can manually setup the highlight colors yourself, see `:help i
 `:help indent-guides`
 
 ## Screenshots
-<img src="https://dl.dropbox.com/u/1019520/vim-indent-guides/rdark.png" width="400" height="400" alt="Indent Guides screenshot: rdark" />
-<img src="https://dl.dropbox.com/u/1019520/vim-indent-guides/bclear.png" width="400" height="400" alt="Indent Guides screenshot: bclear" />
-<img src="https://dl.dropbox.com/u/1019520/vim-indent-guides/clarity.png" width="400" height="400" alt="Indent Guides screenshot: clarity" />
-<img src="https://dl.dropbox.com/u/1019520/vim-indent-guides/moss.png" width="400" height="400" alt="Indent Guides screenshot: moss" />
+<img src="http://i.imgur.com/Q0a4X.png" width="450" height="450" alt="" />
+<img src="http://i.imgur.com/syVFw.png" width="450" height="450" alt="" />
+<img src="http://i.imgur.com/qVOqH.png" width="450" height="450" alt="" />
+<img src="http://i.imgur.com/xKBjO.png" width="450" height="450" alt="" />
 
