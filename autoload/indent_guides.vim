@@ -117,7 +117,7 @@ function! indent_guides#gui_highlight_colors()
     let l:hi_normal_guibg = color_helper#color_name_to_hex(l:color_name)
 
   else
-    " background color could not be extracted, default to basic colors
+    " background color could not be detected, default to basic colors
     call indent_guides#basic_highlight_colors()
   endif
 
