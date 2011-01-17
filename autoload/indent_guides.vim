@@ -82,22 +82,21 @@ function! indent_guides#highlight_colors()
     if has('gui_running')
       call indent_guides#gui_highlight_colors()
     else
-      call indent_guides#cterm_highlight_colors()
+      call indent_guides#basic_highlight_colors()
     endif
   endif
 endfunction
 
 "
-" Defines the indent highlight colors for terminal vim.
+" Defines some basic indent highlight colors that work for Terminal Vim and
+" gVim when colors can't be automatically calculated.
 "
-" NOTE: This function contains no magic at the moment, it will simply use some
-" light or dark preset colors depending on the `set background=` value.
-"
-function! indent_guides#cterm_highlight_colors()
-  let l:colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
+function! indent_guides#basic_highlight_colors()
+  let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
+  let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
 
-  exe 'hi IndentGuidesEven ctermbg=' . l:colors[0]
-  exe 'hi IndentGuidesOdd  ctermbg=' . l:colors[1]
+  exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[0]
+  exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[1]
 endfunction
 
 "
@@ -116,6 +115,10 @@ function! indent_guides#gui_highlight_colors()
     " color name is being used, eg. 'white'
     let l:color_name = matchstr(s:hi_normal, s:color_name_bg_pat)
     let l:hi_normal_guibg = color_helper#color_name_to_hex(l:color_name)
+
+  else
+    " background color could not be extracted, default to basic colors
+    call indent_guides#basic_highlight_colors()
   endif
 
   if l:hi_normal_guibg =~ s:color_hex_pat
