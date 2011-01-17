@@ -9,8 +9,8 @@
 
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
-Version:     1.2
-Last Change: 10 Jan 2011
+Version:     1.3
+Last Change: 17 Jan 2011
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -95,9 +95,9 @@ in an autocmd.
 Use this option to control the percent at which the highlight colors will be
 lightened or darkened.
 
-Default: 5 (5%). Values: between 0 and 100.
+Default: 10 (10%). Values: between 0 and 100.
 >
-  let g:indent_guides_color_change_percent = 5
+  let g:indent_guides_color_change_percent = 10
 <
 
 ------------------------------------------------------------------------------
@@ -203,10 +203,16 @@ Bug reports, feedback, suggestions etc are welcomed.
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
 
+1.3~
+  * Changed the default value of g:|indent_guides_color_change_percent| to 10.
+  * Added support for gVim themes that don't specify a `hi Normal guibg`
+    color.
+
 1.2~
   * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
   * Customizable start indent level.
   * Refactored some internal logic.
+
 1.1~
   * Added basic support for Terminal Vim. See |indent-guides-terminal-vim| for
     more information.
@@ -223,7 +229,7 @@ Bug reports, feedback, suggestions etc are welcomed.
 The MIT Licence
 http://www.opensource.org/licenses/mit-license.php
 
-Copyright (c) 2010 Nate Kane
+Copyright (c) 2010-2011 Nate Kane
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
