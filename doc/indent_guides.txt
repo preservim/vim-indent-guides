@@ -214,6 +214,7 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 1.4~
   * Added the new plugin option g:|indent_guides_enable_on_vim_startup|.
+  * Improved Windows support.
 
 1.3~
   * Changed the default value of g:|indent_guides_color_change_percent| to 10.

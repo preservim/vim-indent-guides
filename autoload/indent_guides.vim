@@ -172,6 +172,9 @@ function! indent_guides#init_script_vars()
   let s:guide_size  = indent_guides#calculate_guide_size()
   let s:hi_normal   = indent_guides#capture_highlight('Normal')
 
+  " remove 'font=<value>' from the s:hi_normal string (only seems to happen on Vim startup in Windows)
+  let s:hi_normal = substitute(s:hi_normal, ' font=[A-Za-z0-9:]\+', "", "")
+
   " shortcuts to the global variables - this makes the code easier to read
   let s:debug             = g:indent_guides_debug
   let s:indent_levels     = g:indent_guides_indent_levels
