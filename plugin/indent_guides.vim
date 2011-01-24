@@ -45,12 +45,13 @@ let g:indent_guides_color_hex_guibg_pattern  = 'guibg=\zs' . g:indent_guides_col
 let g:indent_guides_color_name_guibg_pattern = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
 
 " Configurable global variables
-call s:InitVariable('g:indent_guides_indent_levels',        30)
-call s:InitVariable('g:indent_guides_auto_colors',          1 )
-call s:InitVariable('g:indent_guides_color_change_percent', 10) " ie. 10%
-call s:InitVariable('g:indent_guides_guide_size',           0 )
-call s:InitVariable('g:indent_guides_start_level',          1 )
-call s:InitVariable('g:indent_guides_debug',                0 )
+call s:InitVariable('g:indent_guides_indent_levels',         30)
+call s:InitVariable('g:indent_guides_auto_colors',           1 )
+call s:InitVariable('g:indent_guides_color_change_percent',  10) " ie. 10%
+call s:InitVariable('g:indent_guides_guide_size',            0 )
+call s:InitVariable('g:indent_guides_start_level',           1 )
+call s:InitVariable('g:indent_guides_enable_on_vim_startup', 0 )
+call s:InitVariable('g:indent_guides_debug',                 0 )
 
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>
@@ -58,6 +59,11 @@ nmap <Leader>ig :IndentGuidesToggle<CR>
 " Auto commands
 augroup indent_guides
   autocmd!
+
+  if g:indent_guides_enable_on_vim_startup
+    autocmd VimEnter * :IndentGuidesEnable
+  endif
+
   autocmd BufEnter,WinEnter * call indent_guides#process_autocmds()
 augroup END
 
