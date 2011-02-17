@@ -20,9 +20,9 @@ function! s:IndentGuidesDisable()
 endfunction
 
 " Commands
-command! IndentGuidesToggle  call s:IndentGuidesToggle()
-command! IndentGuidesEnable  call s:IndentGuidesEnable()
-command! IndentGuidesDisable call s:IndentGuidesDisable()
+command! -bar IndentGuidesToggle  call s:IndentGuidesToggle()
+command! -bar IndentGuidesEnable  call s:IndentGuidesEnable()
+command! -bar IndentGuidesDisable call s:IndentGuidesDisable()
 
 "
 " Initializes a given variable to a given value. The variable is only
