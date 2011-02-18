@@ -41,8 +41,8 @@ function! indent_guides#enable()
   " will automagically figure out whether to use tabs or spaces
   for l:level in range(s:start_level, s:indent_levels)
     let l:group      = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
-    let l:pattern    = '^\s\{' . (l:level * s:indent_size - s:indent_size) . '\}\zs'
-    let l:pattern   .= '\s\{' . s:guide_size . '\}'
+    let l:pattern    = '^\s*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
+    let l:pattern   .= '\s*\%' . (((l:level - 1) * s:indent_size + 1) + s:guide_size) . 'v'
     let l:pattern   .= '\ze'
 
     " define the higlight pattern and add to list
@@ -207,12 +207,17 @@ endfunction
 "
 function! indent_guides#calculate_guide_size()
   let l:guide_size  = g:indent_guides_guide_size
-  let l:indent_size = indent_guides#get_indent_size()
 
-  if l:indent_size > 1 && l:guide_size >= 1
-    let l:guide_size = (l:guide_size > s:indent_size) ? s:indent_size : l:guide_size
-  else
+  if &expandtab == 0 && &tabstop == s:indent_size
     let l:guide_size = s:indent_size
+  else
+    if s:indent_size > 1 && l:guide_size >= 1
+      if l:guide_size > s:indent_size
+        let l:guide_size = s:indent_size
+      end
+    else
+      let l:guide_size = s:indent_size
+    endif
   endif
 
   return l:guide_size
@@ -223,7 +228,7 @@ endfunction
 " being used.
 "
 function! indent_guides#get_indent_size()
-  return (&l:expandtab == 1) ? &l:shiftwidth : 1
+  return &l:shiftwidth
 endfunction
 
 "

@@ -1,4 +1,4 @@
-vim:tw=78:ts=8:sw=8:noet
+vim:tw=78:ts=8:sw=8:noet:nolist
 
 test
 	test
