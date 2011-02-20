@@ -9,8 +9,8 @@
 
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
-Version:     1.4
-Last Change: 6 Feb 2011
+Version:     1.5 (pending release)
+Last Change: 20 Feb 2011
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -211,6 +211,10 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
+
+1.5~
+  * Added -bar to all the :commands so they can chain with other :commands
+    (thanks to graywh).
 
 1.4~
   * Added the new plugin option g:|indent_guides_enable_on_vim_startup|.
