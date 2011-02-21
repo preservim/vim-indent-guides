@@ -217,6 +217,8 @@ Bug reports, feedback, suggestions etc are welcomed.
     (thanks to graywh).
   * No longer overriding pre-defined custom highlight colors (thanks to
     graywh).
+  * Using str2float to work around a float bug in some versions of Vim 7.2
+    (thanks to voidus).
 
 1.4~
   * Added the new plugin option g:|indent_guides_enable_on_vim_startup|.
