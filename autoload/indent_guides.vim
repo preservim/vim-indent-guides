@@ -152,8 +152,8 @@ endfunction
 " Define default highlights.
 "
 function! indent_guides#define_default_highlights()
-  exe 'hi default clear IndentGuidesOdd'
-  exe 'hi default clear IndentGuidesEven'
+  hi default clear IndentGuidesOdd
+  hi default clear IndentGuidesEven
 endfunction
 
 "
