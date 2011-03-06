@@ -40,13 +40,21 @@ function! indent_guides#enable()
   " loop through each indent level and define a highlight pattern
   " will automagically figure out whether to use tabs or spaces
   for l:level in range(s:start_level, s:indent_levels)
-    let l:group      = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
-    let l:pattern    = '^\s*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
-    let l:pattern   .= '\s*\%' . (((l:level - 1) * s:indent_size + 1) + s:guide_size) . 'v'
-    let l:pattern   .= '\ze'
+    let l:group = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
+
+    " soft-tab pattern
+    let l:soft_pattern  = '^\s*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
+    let l:soft_pattern .= '\s*\%' . (((l:level - 1) * s:indent_size + 1) + s:guide_size) . 'v'
+    let l:soft_pattern .= '\ze'
+
+    " hard-tab pattern
+    let l:hard_pattern  = '^\t*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
+    let l:hard_pattern .= '\t*\%' . (((l:level - 1) * s:indent_size + 1) + s:indent_size) . 'v'
+    let l:hard_pattern .= '\ze'
 
     " define the higlight pattern and add to list
-    call add(w:indent_guides_matches, matchadd(l:group, l:pattern))
+    call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
+    call add(w:indent_guides_matches, matchadd(l:group, l:hard_pattern))
   endfor
 endfunction
 
@@ -206,18 +214,10 @@ endfunction
 " NOTE: Currently, this only works when soft-tabs are being used.
 "
 function! indent_guides#calculate_guide_size()
-  let l:guide_size  = g:indent_guides_guide_size
+  let l:guide_size = g:indent_guides_guide_size
 
-  if &expandtab == 0 && &tabstop == s:indent_size
+  if l:guide_size > s:indent_size
     let l:guide_size = s:indent_size
-  else
-    if s:indent_size > 1 && l:guide_size >= 1
-      if l:guide_size > s:indent_size
-        let l:guide_size = s:indent_size
-      end
-    else
-      let l:guide_size = s:indent_size
-    endif
   endif
 
   return l:guide_size
