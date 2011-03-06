@@ -216,7 +216,7 @@ endfunction
 function! indent_guides#calculate_guide_size()
   let l:guide_size = g:indent_guides_guide_size
 
-  if l:guide_size > s:indent_size
+  if l:guide_size == 0 || l:guide_size > s:indent_size
     let l:guide_size = s:indent_size
   endif
 
