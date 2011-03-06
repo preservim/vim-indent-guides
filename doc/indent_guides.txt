@@ -213,6 +213,8 @@ Bug reports, feedback, suggestions etc are welcomed.
 7. CHANGELOG                                           *indent-guides-changelog*
 
 1.5 (pending release)~
+  * Added highlight support for files with a mixture of soft-tabs and hard-
+    tabs (thanks to graywh).
   * Added -bar to all the :commands so they can chain with other :commands
     (thanks to graywh).
   * No longer overriding pre-defined custom highlight colors (thanks to
