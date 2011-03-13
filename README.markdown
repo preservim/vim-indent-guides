@@ -7,8 +7,9 @@ Indent Guides is a plugin for visually displaying indent levels in Vim.
 * Will highlight indent levels with alternating colors.
 * Full support for gVim and basic support for Terminal Vim.
 * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
-* **NEW:** Customizable size for indent guides, eg. skinny guides (soft-tabs only).
-* **NEW:** Customizable start indent level.
+* Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+* Customizable start indent level.
+* **NEW:** Highlight support for files with a mixture of tab and space indent styles.
 
 ## Requirements
 * Vim 7.2+
@@ -34,18 +35,23 @@ Here's an example of how to define custom colors instead of using the ones the p
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
+Alternatively you can add the following lines to your colorscheme file.
+
+    hi IndentGuidesOdd  guibg=red   ctermbg=3
+    hi IndentGuidesEven guibg=green ctermbg=4
+
 ### Terminal Vim
 At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead, some preset colors are used depending on whether `background` is set to `dark` or `light`.
 
 When `set background=dark` is used, the following highlight colors will be defined:
 
-    hi IndentGuidesEven ctermbg=darkgrey
     hi IndentGuidesOdd  ctermbg=black
+    hi IndentGuidesEven ctermbg=darkgrey
 
 Alternatively, when `set background=light` is used, the following highlight colors will be defined:
 
-    hi IndentGuidesEven ctermbg=lightgrey
     hi IndentGuidesOdd  ctermbg=white
+    hi IndentGuidesEven ctermbg=lightgrey
 
 If for some reason it's incorrectly defining light highlight colors instead of dark ones or vice versa, the first thing you should check is that the `background` value is being set correctly for your colorscheme. Sometimes it's best to manually set the `background` value in your `.vimrc`, for example:
 
@@ -62,4 +68,3 @@ Alternatively you can manually setup the highlight colors yourself, see `:help i
 <img src="http://i.imgur.com/7tMBl.png" width="448" height="448" alt="" />
 <img src="http://i.imgur.com/EvrqK.png" width="448" height="448" alt="" />
 <img src="http://i.imgur.com/hHqp2.png" width="448" height="448" alt="" />
-
