@@ -41,18 +41,11 @@ function! indent_guides#enable()
   " will automagically figure out whether to use tabs or spaces
   for l:level in range(s:start_level, s:indent_levels)
     let l:group = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
+    let l:column_start = (l:level - 1) * s:indent_size + 1
+    let l:soft_pattern = indent_guides#indent_highlight_pattern('\s', l:column_start, s:guide_size)
+    let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
 
-    " soft-tab pattern
-    let l:soft_pattern  = '^\s*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
-    let l:soft_pattern .= '\s*\%' . (((l:level - 1) * s:indent_size + 1) + s:guide_size) . 'v'
-    let l:soft_pattern .= '\ze'
-
-    " hard-tab pattern
-    let l:hard_pattern  = '^\t*\%' . ((l:level - 1) * s:indent_size + 1) . 'v\zs'
-    let l:hard_pattern .= '\t*\%' . (((l:level - 1) * s:indent_size + 1) + s:indent_size) . 'v'
-    let l:hard_pattern .= '\ze'
-
-    " define the higlight pattern and add to list
+    " define the higlight patterns and add to matches list
     call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
     call add(w:indent_guides_matches, matchadd(l:group, l:hard_pattern))
   endfor
@@ -246,3 +239,21 @@ function! indent_guides#capture_highlight(group_name)
   return l:output
 endfunction
 
+"
+" Returns a regex pattern for highlighting an indent level.
+"
+" Example: indent_guides#indent_highlight_pattern(' ', 1, 4)
+" Returns: /^ *\%1v\zs *\%5v\ze/
+"
+" Example: indent_guides#indent_highlight_pattern('\s', 5, 2)
+" Returns: /^\s*\%5v\zs\s*\%7v\ze/
+"
+" Example: indent_guides#indent_highlight_pattern('\t', 9, 2)
+" Returns: /^\t*\%9v\zs\t*\%11v\ze/
+"
+function! indent_guides#indent_highlight_pattern(indent_pattern, column_start, indent_size)
+  let l:pattern  = '^' . a:indent_pattern . '*\%' . a:column_start . 'v\zs'
+  let l:pattern .= a:indent_pattern . '*\%' . (a:column_start + a:indent_size) . 'v'
+  let l:pattern .= '\ze'
+  return l:pattern
+endfunction
