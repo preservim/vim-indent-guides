@@ -169,7 +169,7 @@ endfunction
 " plugin is enabled.
 "
 function! indent_guides#init_script_vars()
-  let s:indent_size = indent_guides#get_indent_size()
+  let s:indent_size = &l:shiftwidth
   let s:guide_size  = indent_guides#calculate_guide_size()
   let s:hi_normal   = indent_guides#capture_highlight('Normal')
 
@@ -214,14 +214,6 @@ function! indent_guides#calculate_guide_size()
   endif
 
   return l:guide_size
-endfunction
-
-"
-" Gets the indent size, which depends on whether soft-tabs or hard-tabs are
-" being used.
-"
-function! indent_guides#get_indent_size()
-  return &l:shiftwidth
 endfunction
 
 "
