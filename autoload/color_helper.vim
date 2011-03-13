@@ -877,4 +877,3 @@ function! color_helper#color_name_to_hex(color_name)
 
   return l:hex_code
 endfunction
-
