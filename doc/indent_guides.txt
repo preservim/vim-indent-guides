@@ -134,6 +134,14 @@ Default: 1. Values: between 1 and g:|indent_guides_indent_levels|.
 <
 
 ------------------------------------------------------------------------------
+                                                  *'indent_guides_space_guides'*
+Use this option to control whether the plugin considers spaces as indention.
+
+Default: 1. Values: 0 or 1.
+>
+  let g:indent_guides_space_guides = 0
+<
+------------------------------------------------------------------------------
                                          *'indent_guides_enable_on_vim_startup'*
 Use this option to control whether the plugin is enabled on Vim startup.
 
