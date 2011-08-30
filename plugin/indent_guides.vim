@@ -52,6 +52,7 @@ call s:InitVariable('g:indent_guides_guide_size',            0 )
 call s:InitVariable('g:indent_guides_start_level',           1 )
 call s:InitVariable('g:indent_guides_enable_on_vim_startup', 0 )
 call s:InitVariable('g:indent_guides_debug',                 0 )
+call s:InitVariable('g:indent_guides_space_guides',          1 )
 
 " Default mapping
 nmap <Leader>ig :IndentGuidesToggle<CR>

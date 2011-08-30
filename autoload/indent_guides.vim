@@ -46,7 +46,9 @@ function! indent_guides#enable()
     let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
 
     " define the higlight patterns and add to matches list
-    call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
+    if g:indent_guides_space_guides
+      call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
+    end
     call add(w:indent_guides_matches, matchadd(l:group, l:hard_pattern))
   endfor
 endfunction
