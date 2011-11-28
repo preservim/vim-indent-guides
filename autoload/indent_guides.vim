@@ -70,7 +70,11 @@ function! indent_guides#clear_matches()
   if !empty(w:indent_guides_matches)
     let l:index = 0
     for l:match_id in w:indent_guides_matches
-      call matchdelete(l:match_id)
+      try
+        call matchdelete(l:match_id)
+      catch /E803:/
+        " Do nothing
+      endtry
       call remove(w:indent_guides_matches, l:index)
       let l:index += l:index
     endfor
