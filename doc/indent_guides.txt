@@ -220,7 +220,6 @@ Credits:~
 Contact:~
   * Twitter: @nathanaelkane
   * Email:   <nathanaelkane AT gmail DOT com>
-  * IRC:     nate- on Freenode (I usually idle in the #vim channel)
 
 Bug reports, feedback, suggestions etc are welcomed.
 
