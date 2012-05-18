@@ -55,7 +55,9 @@ call s:InitVariable('g:indent_guides_debug',                 0 )
 call s:InitVariable('g:indent_guides_space_guides',          1 )
 
 " Default mapping
-nmap <Leader>ig :IndentGuidesToggle<CR>
+if maparg('<Leader>ig', 'n') == ''
+  nmap <Leader>ig :IndentGuidesToggle<CR>
+endif
 
 " Auto commands
 augroup indent_guides
