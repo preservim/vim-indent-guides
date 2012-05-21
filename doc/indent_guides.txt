@@ -156,14 +156,14 @@ Default: 0. Values: 0 or 1.
 The default mapping for toggling indent guides is <Leader>ig. You can easily
 map it to other keys. For example:
 >
-  :nmap <Leader>ig :IndentGuidesToggle<CR>
+  :nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 <
 
 You can also map some other commands that are not mapped by default. For
 example:
 >
-  :nmap <Leader>ie :IndentGuidesEnable<CR>
-  :nmap <Leader>id :IndentGuidesDisable<CR>
+  :nmap <silent> <Leader>ie <Plug>IndentGuidesEnable
+  :nmap <silent> <Leader>id <Plug>IndentGuidesDisable
 <
 
 ==============================================================================
@@ -225,6 +225,9 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
+
+1.7 (pending release)~
+  * Added way to override the default mapping (thanks xuhdev).
 
 1.6~
   * Added option g:|indent_guides_space_guides| to control whether spaces are

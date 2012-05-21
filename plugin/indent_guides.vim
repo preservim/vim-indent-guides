@@ -55,7 +55,14 @@ call s:InitVariable('g:indent_guides_debug',                 0 )
 call s:InitVariable('g:indent_guides_space_guides',          1 )
 
 " Default mapping
-nmap <Leader>ig :IndentGuidesToggle<CR>
+if !hasmapto('<Plug>IndentGuidesToggle')
+  nmap <silent><unique> <Leader>ig <Plug>IndentGuidesToggle
+endif
+
+" Plug mappings
+nnoremap <unique><script> <Plug>IndentGuidesToggle  :IndentGuidesToggle<CR>
+nnoremap <unique><script> <Plug>IndentGuidesEnable  :IndentGuidesEnable<CR>
+nnoremap <unique><script> <Plug>IndentGuidesDisable :IndentGuidesDisable<CR>
 
 " Auto commands
 augroup indent_guides
