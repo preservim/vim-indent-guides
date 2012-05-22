@@ -55,7 +55,7 @@ call s:InitVariable('g:indent_guides_debug',                 0 )
 call s:InitVariable('g:indent_guides_space_guides',          1 )
 
 " Default mapping
-if !hasmapto('<Plug>IndentGuidesToggle')
+if !hasmapto('<Plug>IndentGuidesToggle') && maparg('<Leader>ig', 'n') == ''
   nmap <silent><unique> <Leader>ig <Plug>IndentGuidesToggle
 endif
 
