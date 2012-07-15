@@ -40,7 +40,11 @@ function! indent_guides#enable()
   " loop through each indent level and define a highlight pattern
   " will automagically figure out whether to use tabs or spaces
   for l:level in range(s:start_level, s:indent_levels)
-    let l:group = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
+    if (l:level - s:start_level) % s:level_per_guide != 0
+      continue
+    endif
+    let l:logical_level=l:level/s:level_per_guide
+    let l:group = 'IndentGuides' . ((l:logical_level % 2 == 0) ? 'Even' : 'Odd')
     let l:column_start = (l:level - 1) * s:indent_size + 1
     let l:soft_pattern = indent_guides#indent_highlight_pattern('\s', l:column_start, s:guide_size)
     let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
@@ -190,6 +194,7 @@ function! indent_guides#init_script_vars()
   let s:color_hex_bg_pat  = g:indent_guides_color_hex_guibg_pattern
   let s:color_name_bg_pat = g:indent_guides_color_name_guibg_pattern
   let s:start_level       = g:indent_guides_start_level
+  let s:level_per_guide   = g:indent_guides_level_per_guide
 
   " str2float not available in vim versions <= 7.1
   if has('float')
