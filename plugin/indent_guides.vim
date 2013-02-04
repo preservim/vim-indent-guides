@@ -72,5 +72,5 @@ augroup indent_guides
     autocmd VimEnter * :IndentGuidesEnable
   endif
 
-  autocmd BufEnter,WinEnter * call indent_guides#process_autocmds()
+  autocmd BufEnter,WinEnter,ColorScheme * call indent_guides#process_autocmds()
 augroup END
