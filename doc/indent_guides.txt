@@ -9,8 +9,8 @@
 
 
 Author:      Nate Kane <nathanaelkane AT gmail DOT com>
-Version:     1.6
-Last Change: 01 Jan 2012
+Version:     1.7
+Last Change: 07 Mar 2013
 
 ==============================================================================
 CONTENTS                                                *indent-guides-contents*
@@ -235,11 +235,12 @@ Bug reports, feedback, suggestions etc are welcomed.
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
 
-1.7 (pending release)~
+1.7~
   * Added way to override the default mapping (thanks xuhdev).
   * Added option g:|indent_guides_exclude_filetypes| to specify a list of
     filetypes to disable the plugin for.
   * Disable the plugin when in a diff.
+  * Various bug fixes.
 
 1.6~
   * Added option g:|indent_guides_space_guides| to control whether spaces are
