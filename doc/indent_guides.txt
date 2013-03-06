@@ -239,6 +239,7 @@ Bug reports, feedback, suggestions etc are welcomed.
   * Added way to override the default mapping (thanks xuhdev).
   * Added option g:|indent_guides_exclude_filetypes| to specify a list of
     filetypes to disable the plugin for.
+  * Disable the plugin when in a diff.
 
 1.6~
   * Added option g:|indent_guides_space_guides| to control whether spaces are

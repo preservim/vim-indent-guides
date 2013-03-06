@@ -33,7 +33,7 @@ endfunction
 function! indent_guides#enable()
   let g:indent_guides_autocmds_enabled = 1
 
-  if indent_guides#exclude_filetype()
+  if &diff || indent_guides#exclude_filetype()
     call indent_guides#clear_matches()
     return
   end
