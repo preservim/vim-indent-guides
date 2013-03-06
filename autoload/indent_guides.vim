@@ -33,6 +33,11 @@ endfunction
 function! indent_guides#enable()
   let g:indent_guides_autocmds_enabled = 1
 
+  if indent_guides#exclude_filetype()
+    call indent_guides#clear_matches()
+    return
+  end
+
   call indent_guides#init_script_vars()
   call indent_guides#highlight_colors()
   call indent_guides#clear_matches()
@@ -260,4 +265,16 @@ function! indent_guides#indent_highlight_pattern(indent_pattern, column_start, i
   let l:pattern .= a:indent_pattern . '*\%' . (a:column_start + a:indent_size) . 'v'
   let l:pattern .= '\ze'
   return l:pattern
+endfunction
+
+"
+" Detect if any of the buffer filetypes should be excluded.
+"
+function! indent_guides#exclude_filetype()
+  for ft in split(&ft, ',')
+    if index(g:indent_guides_exclude_filetypes, ft) > -1
+      return 1
+    end
+  endfor
+  return 0
 endfunction

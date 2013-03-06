@@ -150,6 +150,15 @@ Default: 0. Values: 0 or 1.
   let g:indent_guides_enable_on_vim_startup = 0
 <
 
+------------------------------------------------------------------------------
+                                             *'indent_guides_exclude_filetypes'*
+Use this option to specify a list of filetypes to disable the plugin for.
+
+Default: ['help']. Values: list of strings.
+>
+  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+<
+
 ==============================================================================
 4. MAPPINGS                                             *indent-guides-mappings*
 
@@ -228,6 +237,8 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 1.7 (pending release)~
   * Added way to override the default mapping (thanks xuhdev).
+  * Added option g:|indent_guides_exclude_filetypes| to specify a list of
+    filetypes to disable the plugin for.
 
 1.6~
   * Added option g:|indent_guides_space_guides| to control whether spaces are
