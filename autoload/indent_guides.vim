@@ -237,7 +237,7 @@ endfunction
 " Captures and returns the output of highlight group definitions.
 "
 " Example: indent_guides#capture_highlight('normal')
-" Returns: 'Normal xxx guifg=#323232 guibg=#ffffff
+" Returns: 'Normal xxx guifg=#323232 guibg=#ffffff'
 "
 function! indent_guides#capture_highlight(group_name)
   redir => l:output
