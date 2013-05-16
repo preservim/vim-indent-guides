@@ -47,7 +47,7 @@ function! indent_guides#enable()
   for l:level in range(s:start_level, s:indent_levels)
     let l:group = 'IndentGuides' . ((l:level % 2 == 0) ? 'Even' : 'Odd')
     let l:column_start = (l:level - 1) * s:indent_size + 1
-    let l:soft_pattern = indent_guides#indent_highlight_pattern('\s', l:column_start, s:guide_size)
+    let l:soft_pattern = indent_guides#indent_highlight_pattern(g:indent_guides_soft_pattern, l:column_start, s:guide_size)
     let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
 
     " define the higlight patterns and add to matches list
