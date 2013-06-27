@@ -141,6 +141,16 @@ Default: 1. Values: 0 or 1.
 >
   let g:indent_guides_space_guides = 0
 <
+
+------------------------------------------------------------------------------
+                                                  *'indent_guides_soft_pattern'*
+Use this option to explicitly specify a pattern for indentation. For example
+to match spaces only in the beginning of line use ' ' pattern.
+
+Default: '\s'. Values: vim regexp.
+>
+  let g:indent_guides_soft_pattern = ' '
+<
 ------------------------------------------------------------------------------
                                          *'indent_guides_enable_on_vim_startup'*
 Use this option to control whether the plugin is enabled on Vim startup.

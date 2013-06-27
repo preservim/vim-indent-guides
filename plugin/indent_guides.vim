@@ -53,6 +53,8 @@ call s:InitVariable('g:indent_guides_start_level',           1 )
 call s:InitVariable('g:indent_guides_enable_on_vim_startup', 0 )
 call s:InitVariable('g:indent_guides_debug',                 0 )
 call s:InitVariable('g:indent_guides_space_guides',          1 )
+call s:InitVariable('g:indent_guides_soft_pattern',        '\s')
+
 
 if !exists('g:indent_guides_exclude_filetypes')
   let g:indent_guides_exclude_filetypes = ['help']
