@@ -179,6 +179,14 @@ map it to other keys. For example:
   :nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 <
 
+The plugin will not provide the default mapping if either:
+  * You already have something mapped to <Plug>IndentGuidesToggle.
+  * You are already using the <Leader>ig key sequence.
+  * You set to 0 the variable g:indent_guides_default_mapping:
+>
+  let g:indent_guides_default_mapping=0
+<
+
 You can also map some other commands that are not mapped by default. For
 example:
 >
