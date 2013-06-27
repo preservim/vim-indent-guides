@@ -144,8 +144,8 @@ Default: 1. Values: 0 or 1.
 
 ------------------------------------------------------------------------------
                                                   *'indent_guides_soft_pattern'*
-Use this option to explicitly specify a pattern for indentation. For example
-to match spaces only in the beginning of line use ' ' pattern.
+Use this option to explicitly specify a pattern for soft indentation. For
+example to match spaces only in the beginning of line use ' ' pattern.
 
 Default: '\s'. Values: vim regexp.
 >
