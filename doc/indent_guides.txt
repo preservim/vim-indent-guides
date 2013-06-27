@@ -170,6 +170,15 @@ Default: ['help']. Values: list of strings.
   let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 <
 
+------------------------------------------------------------------------------
+                                               *'indent_guides_default_mapping'*
+Use this option to control whether the default mapping (<Leader>ig) gets set.
+
+Default: 1. Values: 0 or 1.
+>
+  let g:indent_guides_default_mapping = 0
+<
+
 ==============================================================================
 4. MAPPINGS                                             *indent-guides-mappings*
 
@@ -177,14 +186,6 @@ The default mapping for toggling indent guides is <Leader>ig. You can easily
 map it to other keys. For example:
 >
   :nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
-<
-
-The plugin will not provide the default mapping if either:
-  * You already have something mapped to <Plug>IndentGuidesToggle.
-  * You are already using the <Leader>ig key sequence.
-  * You set to 0 the variable g:indent_guides_default_mapping:
->
-  let g:indent_guides_default_mapping=0
 <
 
 You can also map some other commands that are not mapped by default. For
@@ -257,6 +258,8 @@ Bug reports, feedback, suggestions etc are welcomed.
 1.8 (pending release)~
   * Added option g:|indent_guides_soft_pattern| to control the pattern for
     soft indentation (thanks @sergey-vlasov).
+  * Added option g:|indent_guides_default_mapping| to control whether the
+    default mapping (<Leader>ig) gets set (thanks @suy).
 
 1.7~
   * Added way to override the default mapping (thanks xuhdev).
