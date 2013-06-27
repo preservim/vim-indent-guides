@@ -246,6 +246,10 @@ Bug reports, feedback, suggestions etc are welcomed.
 ==============================================================================
 7. CHANGELOG                                           *indent-guides-changelog*
 
+1.8 (pending release)~
+  * Added option g:|indent_guides_soft_pattern| to control the pattern for
+    soft indentation (thanks @sergey-vlasov).
+
 1.7~
   * Added way to override the default mapping (thanks xuhdev).
   * Added option g:|indent_guides_exclude_filetypes| to specify a list of
