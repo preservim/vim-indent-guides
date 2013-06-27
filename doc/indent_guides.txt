@@ -262,7 +262,7 @@ Bug reports, feedback, suggestions etc are welcomed.
     default mapping (<Leader>ig) gets set (thanks @suy).
 
 1.7~
-  * Added way to override the default mapping (thanks xuhdev).
+  * Added way to override the default mapping (thanks @xuhdev).
   * Added option g:|indent_guides_exclude_filetypes| to specify a list of
     filetypes to disable the plugin for.
   * Disable the plugin when in a diff.
@@ -270,19 +270,19 @@ Bug reports, feedback, suggestions etc are welcomed.
 
 1.6~
   * Added option g:|indent_guides_space_guides| to control whether spaces are
-    considered as indention (thanks scoz).
-  * Added 'doc/tags' to gitignore (thanks lenniboy).
-  * Fixed E803 ID not found spam (thanks mutewinter).
-  * Fixed str2float issue with Vim 7.1 (thanks acx0).
+    considered as indention (thanks @scoz).
+  * Added 'doc/tags' to gitignore (thanks @lenniboy).
+  * Fixed E803 ID not found spam (thanks @mutewinter).
+  * Fixed str2float issue with Vim 7.1 (thanks @acx0).
 
 1.5~
   * Added highlight support for files with a mixture of tab and space indent
-    styles (thanks graywh).
+    styles (thanks @graywh).
   * Added -bar to all the :commands so they can chain with other :commands
-    (thanks to graywh).
-  * No longer overriding pre-defined custom highlight colors (thanks graywh).
+    (thanks to @graywh).
+  * No longer overriding pre-defined custom highlight colors (thanks @graywh).
   * Using str2float to work around a float bug in some versions of Vim 7.2
-    (thanks voidus).
+    (thanks @voidus).
 
 1.4~
   * Added the new plugin option g:|indent_guides_enable_on_vim_startup|.
