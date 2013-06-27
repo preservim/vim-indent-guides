@@ -279,7 +279,7 @@ Bug reports, feedback, suggestions etc are welcomed.
   * Added highlight support for files with a mixture of tab and space indent
     styles (thanks @graywh).
   * Added -bar to all the :commands so they can chain with other :commands
-    (thanks to @graywh).
+    (thanks @graywh).
   * No longer overriding pre-defined custom highlight colors (thanks @graywh).
   * Using str2float to work around a float bug in some versions of Vim 7.2
     (thanks @voidus).
