@@ -180,7 +180,11 @@ endfunction
 " plugin is enabled.
 "
 function! indent_guides#init_script_vars()
-  let s:indent_size = &l:shiftwidth
+  if &l:shiftwidth > 0
+    let s:indent_size = &l:shiftwidth
+  else
+    let s:indent_size = &l:tabstop
+  endif
   let s:guide_size  = indent_guides#calculate_guide_size()
   let s:hi_normal   = indent_guides#capture_highlight('Normal')
 
