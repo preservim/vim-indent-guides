@@ -1,0 +1,4 @@
+addon: latex-suite
+description: "comprehensive set of tools to view, edit, and compile LaTeX documents"
+disabledby: "let did_latexSuite_disabled = 1"
+files:

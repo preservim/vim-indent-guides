@@ -1,0 +1,426 @@
+vim-latexsuite (20130116.788-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * debian/patches:
+    - remove upstream applied patches
+    - update changelog.diff
+  * debian/copyright: update years.
+  * debian/{compat,control,rules}: switch to debhelper compat v9.
+  * debian/control:
+   - bump Standards-Version to 3.9.4.
+   - add explicit dep and build-dep on python to fix lintian error.
+   - use anonscm.debian.org in VCS-* fields.
+
+ -- Johann Felix Soden <johfel@debian.org>  Mon, 14 Oct 2013 00:25:26 +0200
+
+vim-latexsuite (20120125.768-2) unstable; urgency=low
+
+  * Include latest upstream changes.
+  * Add shortcut for iota.
+    Thanks to Alessandro Pezzoni <alessandro_pezzoni@lavabit.com>
+  * debian/*: Change my e-mail address and remove DM upload rights.
+  * debian/copyright: update to copyright-format 1.0.
+  * debian/control: bump Standards-Version to 3.9.3.
+
+ -- Johann Felix Soden <johfel@debian.org>  Sun, 13 May 2012 14:27:15 +0200
+
+vim-latexsuite (20120125.768-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * debian/patches:
+    - refresh disabledby.diff
+    - update changelog.diff
+  * debian/copyright: use latest DEP5 format and update years and
+    upstream maintainers.
+  * debian/control: bump Standards-Version to 3.9.2.
+  * debian/README.Debian: fix spelling mistake.
+
+ -- Johann Felix Soden <johfel@gmx.de>  Sat, 28 Jan 2012 11:31:43 +0100
+
+vim-latexsuite (20110214.1049-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Add patch to fix double backslash in math environment replacement.
+    Thanks to Cédric Boutillier <cedric.boutillier@polytechnique.org>
+    (Closes: #590926)
+  * debian/control: bump Standards-Version to 3.9.1.
+  * debian/copyright: update copyright years and upstream maintainers.
+  * debian/watch: update to new upstream package naming.
+  * debian/patches:
+    - remove upstream-applied patches and refresh
+    - update changelog.diff
+  * Remove obsolete svn-layout files from debian/.
+
+ -- Johann Felix Soden <johfel@gmx.de>  Tue, 15 Feb 2011 12:51:20 +0100
+
+vim-latexsuite (20100129-2) unstable; urgency=low
+
+  * Add patch for removing error-prone default errorformats.
+    (Closes: #582100)
+
+ -- Johann Felix Soden <johfel@gmx.de>  Fri, 11 Jun 2010 16:24:21 +0200
+
+vim-latexsuite (20100129-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Pick upstream changeset 1105: fix wrong usage of fnameescape
+  * debian/control: Update standards-version to 3.8.4
+  * debian/patches:
+   - remove upstream-applied patches and refresh
+   - fix warning on double-loading in disabledby.diff
+   - update changelog.diff
+
+ -- Johann Felix Soden <johfel@gmx.de>  Sat, 13 Feb 2010 16:16:46 +0100
+
+vim-latexsuite (20091230-3) unstable; urgency=low
+
+  * debian/bug/vim-latexsuite/presubj: Correct the link to README.Debian
+    (Closes: #565464)
+  * Adding a 'not enabled by default'-note to the package description
+    and debian/bug/vim-latexsuite/presubj (Closes: #565463)
+  * Fix error on both system-wide and local install (Closes: #444426)
+
+ -- Johann Felix Soden <johfel@gmx.de>  Thu, 21 Jan 2010 22:52:51 +0100
+
+vim-latexsuite (20091230-2) unstable; urgency=low
+
+  * Move the version dependency from vim to vim-common to support vim
+    variants (Closes: #564335)
+
+ -- Johann Felix Soden <johfel@gmx.de>  Sat, 09 Jan 2010 12:21:48 +0100
+
+vim-latexsuite (20091230-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * debian/control: add version to vim dependency
+  * debian/patches:
+   - drop fix_build_system.diff
+   - update changelog.diff
+
+ -- Johann Felix Soden <johfel@gmx.de>  Fri, 08 Jan 2010 09:51:06 +0100
+
+vim-latexsuite (20091002-2) unstable; urgency=low
+
+  * Force redraw after latex run (Closes: #365572)
+  * debian/control: add "DM-Upload-Allowed"-field
+  * Convert package to the 3.0 (quilt) source format.
+   - add debian/source/format
+   - remove debian/README.source
+   - debian/control: remove quilt from Build-Depends
+   - debian/rules: do not use quilt dh addon anymore
+
+ -- Johann Felix Soden <johfel@gmx.de>  Fri, 11 Dec 2009 22:08:25 +0100
+
+vim-latexsuite (20091002-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Adopt the package (Closes: #454323)
+  * Support labels after \% (Closes: #381161)
+  * Preserve primary paste buffer during project loading
+    (Closes: #280793)
+  * Add patch for replacing the prefix at completion (Closes: #481524)
+  * debian/patches:
+   - remove patches which are unused or applied by upstream
+   - update debian/patches/changelog.diff
+   - refresh disabledby.diff
+  * debian/control
+   - update Vcs-* fields
+   - add build-dep on quilt with debhelper 7 support
+   - add build-dep on python-support, so ${python:Depends} is set.
+  * debian/dirs: don't create empty dir /usr/share/lintian/overrides/
+  * debian/copyright: use GPL 2+ instead of versionsless GPL for
+    debian/*
+
+ -- Johann Felix Soden <johfel@gmx.de>  Wed, 07 Oct 2009 15:06:59 +0200
+
+vim-latexsuite (20090816-1) unstable; urgency=low
+
+  * QA upload.
+  * New upstream snapshot (Closes: #460555, #524898)
+   - Update patches incl. svn changelog
+  * Minimize dh rules
+   - use makefile from upstream
+  * Raise debian/compat to 7
+  * Update standards-version to 3.8.3
+  * Use quilt instead of dpatch
+  * Add patch for preserving errorformats (Closes: #487661)
+  * Add installation instructions to README.Debian (Closes: #434903, #447106)
+  * Avoid warnings with ngerman (Closes: #507617)
+  * Use xdg-open if available and gv instead of ghostview (Closes: #514770)
+  * Fix filename completion for \input{
+    - Remove quitting with escape key from filedialog
+    (Closes: #444394, #444397)
+  * Remove lintian-override python-dep
+  * Update dependencies in debian/control
+  * Update debian/watch
+  * Use machine-readable format for debian/copyright
+  * Fix cite completion with brackets (Closes: #449016, #544178)
+
+ -- Johann Felix Soden <johfel@gmx.de>  Sat, 29 Aug 2009 17:21:03 +0200
+
+vim-latexsuite (20060325-5) unstable; urgency=low
+
+  * Orphaning the package.  Maintainer set to Debian QA Group.
+  * debian/vim-registry/vim-latexsuite.yaml:
+    - Remove the entries for the "BORKENFILES" from the registry file.
+      (Closes: #446080)
+  * debian/control:
+    - Remove the version from the vim-common Depends since it is available in
+      etch.
+    - Remove the gvim Depends alternative since all vim variant packages
+      Provide vim.
+    - Depend on vim-python | python now that all vim variant packages that
+      have python support Provide vim-python.  (Closes: #459957)
+    - Bump Standards-Version to 3.7.3 -- no changes needed.
+
+ -- James Vega <jamessan@debian.org>  Sat, 19 Apr 2008 09:20:09 -0400
+
+vim-latexsuite (20060325-4.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Delete the broken files in the installation directory, not in the source
+    tree, which fixes the double-build FTBFS (Closes: #441730).
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Sat, 29 Sep 2007 18:32:11 +0200
+
+vim-latexsuite (20060325-4) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * debian/control
+    - set the maintainer to Debian VIM Maintainers with me and Franz as
+      uploader
+    - added XS-Vcs-Browser field
+    - recommends vim-addon-manager as per the vim policy
+    - cosmetic improvements in the long description
+    - add Homepage field
+
+  [ Laurent Bigonville ]
+  * Fix installation of lintian-override file (Closes: #439216)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sat, 22 Sep 2007 19:43:25 +0200
+
+vim-latexsuite (20060325-3) unstable; urgency=low
+
+  * debian/patches/
+    - renamed patches removing heading numeric prefix: it is not needed, the
+      order is set by 00list
+    - added disabledby.dpatch which enables disabling the whole latex-suite by
+      defining the global did_latexSuite_disabled variable; changed 00list
+      accordingly to apply the new patch
+  * debian/vim-registry/vim-latexsuite.yaml
+    - added the 'disabledby:' field which enables automatic disabling on the
+      latex-suite via vim-addons
+
+ -- Stefano Zacchiroli <zack@debian.org>  Wed,  7 Feb 2007 15:02:17 +0100
+
+vim-latexsuite (20060325-2) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * Acknowledging NMU by Sergei Golovan, integrated changes marked below
+  * Added latexsuite entry for the Vim add-on registry
+  * debian/control
+    - added texlive-base-bin as an alternative Recommends for tetex-bin
+      (Closes: #378294)
+    - added XS-Vcs-Svn field pointing to our repo
+    - added myself to the Uploaders field
+    - moved debhelper and dpatch from Build-Depends-Indep to Build-Depends as
+      required by Policy Manual, section 7.6 (NMU ack)
+  * debian/lintian-override
+    - override false positive python-script-but-no-python-dep because there is
+      a dependency on vim-full, which depends on python (NMU ack)
+  * debian/vim-registry/
+    - converted the registry file to the new YAML format
+    - renamed vim registry to follow the packagename.yaml convention
+  * debian/rules
+    - added binary-arch and binary-indep targets to debian/rules as required
+      by Policy Manual, section 4.8 (NMU ack) (Closes: #395810)
+
+  [ Franz Pletz ]
+  * Fixed mapping InsertItemOnThisLine by preventing it to reenter insert
+    mode, see 03_insertitem.dpatch (Closes: #350021)
+  * Fixed adding extension twice in ftplugin/latex-suite/outline.py, see
+    04_fname_outline.dpatch (Closes: #365152)
+  * debian/rules: Removed useless debhelper calls
+  * Bumped standards-version to 3.7.2, no changes necessary
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 16 Jan 2007 14:59:20 +0100
+
+vim-latexsuite (20060325-1) unstable; urgency=medium
+
+  * The 'Spring Cleaning' release (Thanks for the suggestion, Artur)
+  * New upstream release (Closes: #350784, #323304)
+  * New maintainer (Closes: #307166)
+  * Updated standards-version to 3.6.2
+  * Moved to debhelper compatibility level 5
+  * Made debian/copyright compliant to standards
+  * Updated debian/watch to version 3 (Closes: #312079)
+  * Fixed permissions in debian/rules for debian/bug/script and
+    ftplugin/latex-suite/outline.py (Closes: #308938)
+  * Enhanced description
+  * Moved RELEASE-1.5.txt to the debian directory
+  * Changed version numbering scheme from 0.<date> to <date>
+  * Removed useless lintian overrides
+
+  [ Debian Vim Maintainers ]
+  * Corrected typos in README.Debian
+  * Simplified debian/rules and added dpatch-rules
+  * Added vim-full as an alternative to vim-python in Depends (all features
+    provided by vim-python are also provided by vim-full)
+
+  [ Artur R. Czechowski ]
+  * Patches:
+    + (new) 01_foldingfix.dpatch: properly fixes folding. (See: #246798)
+    + (new) 02_changelog.dpatch - upstream does not provide Changelog in
+      tarball so we fetch it from website manually
+  * debian/control:
+    + Recommends tetex-bin instead of latex (unavailable now)
+    + Depends on vim-common >= 1:6.4-004+1 to get vimrc without mapped "p"
+      key in visual mode (Closes: #301078), additionaly, helpztags has been
+      moved into vim-common long time ago
+  * debian/postinst:
+    + Because vim 6.3 is in stable we do not need ugly hacks related to
+      dpkg-divert, vim 6.1 and old vim-latexsuite
+    + helpztags runs only in configure stage
+  * debian/postrm:
+    + helpztags runs only in remove stage, not in purge (Closes: #355711)
+
+ -- Franz Pletz <fpletz@franz-pletz.org>  Wed, 16 Apr 2006 16:35:04 +0200
+
+vim-latexsuite (0.20041219-2) unstable; urgency=medium
+
+  * Documentation is sometimes unavailable (see #307906). Workaround
+    and information required in bugreport are mentioned in
+    - bug script and presubj
+    - README.Debian
+    - NEWS
+  * Suggest vim-python dependency to correctly handle mutliple compilation
+    (Closes: #296571)
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sun,  8 May 2005 00:23:22 +0200
+
+vim-latexsuite (0.20041219-1) unstable; urgency=low
+
+  * New upstream release
+    + vim does not hang up when opening other tex files in the same document
+      (Closes: #281904)
+  * Remove lintian warning by decapitalize first letter od Description
+  * Incorporate Makefile into debian/rules
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sun, 16 Jan 2005 17:31:25 +0100
+
+vim-latexsuite (0.20040805-1) unstable; urgency=low
+
+  * Long awaiting new upstream release. It has a lot of bugfixes, either
+    submitted to Debian BTS or to upstream, so urgency is medium.
+    + Force matching case with the \C pattern (Closes: #237648)
+    + Fixed <Alt-key> mapping (Closes: #256704)
+  * Fixed: fails to fold properly if anything precedes \end{foo}
+    (Closes: #246798)
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Mon,  9 Aug 2004 01:58:05 +0200
+
+vim-latexsuite (0.20040314-1) unstable; urgency=low
+
+  * New upstream release
+    + Alt-I which inserts an \item is used in some languages for typing
+      eaccute (Closes: #237623)
+  * Upstream marks files for remove instead removing it. So we need to remove
+    it for ourselfs in Makefile
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Mon,  5 Apr 2004 21:29:47 +0200
+
+vim-latexsuite (0.20031216-2) unstable; urgency=low
+
+  * vim-latexsuite now depends on vim instead pre-depends (Closes: #237704)
+  * urgency high due to severity serious
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sat, 13 Mar 2004 00:22:15 +0100
+
+vim-latexsuite (0.20031216-1) unstable; urgency=low
+
+  * New upstream release
+    - among others it contains Quicktart Guide; see NEWS.Debian for
+      details
+  * debian/watch added
+  * debian/rules: package is build as a binary-indep
+  * gv is a default PostScript viewer (Closes: #227673)
+  * Suggests: xpdf | pdf-viewer, gv | postscript-viewer
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sun, 22 Feb 2004 17:25:41 +0100
+
+vim-latexsuite (0.20031113-1) unstable; urgency=low
+
+  * New upstream release (called 1.5)
+  * Pre-Depends on vim >=1:6.2-106+1 (yet another helpztags bug: #213032)
+    (Closes: #220582)
+  * ftplugin/latex-suite/packages/german: fixed stringss syntax
+    (Closes: #219484)
+  * update Changelog from CVS (upstream forgot to put in into tarball)
+  * release notes for 1.5
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Thu, 13 Nov 2003 21:37:23 +0100
+
+vim-latexsuite (0.20030913-1) unstable; urgency=low
+
+  * New upstream release
+    - bracket completion works without side effects (Closes: #205446)
+  * Pre-Depends on vim >=1:6.2-098+3 (Closes: #211764)
+  * Apply rules from draft of Debian Vim Scripts Policy available at
+    http://yacoob.dnsalias.net/sakwa/vim-policy.txt
+    - install in ${VIM}/addons instead ${VIM}/vim${vimversion}
+    - remove all diverts
+    - build doc/tags file on install/upgrade/uninstall
+  * Manualy remove files/directories from vim-latexsuite for vim6.1,
+    dpkg-divert sux
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Wed, 24 Sep 2003 19:29:18 +0200
+
+vim-latexsuite (0.20030905-1) unstable; urgency=low
+
+  * New upstream release
+    - updated documentation (Closes: #205891)
+  * remove diverting plugin/explorer.vim (it is no longer provided
+    in vim-latexsuite)
+  * _really_ bumping Standard-Version to 3.6.1.0 (still nothing to change)
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sun,  7 Sep 2003 16:35:19 +0200
+
+vim-latexsuite (0.20030726-2) unstable; urgency=medium
+
+  * plugin/explorer.vim: applying again patch for :edit <directory> which
+    is missed from upstream (Closes: #206050)
+  * handcrafted helptags file instead creating in it postinst
+  * debian/control:
+    - bumping Standard-Version to 3.6.1.0 (nothing to change)
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Wed, 20 Aug 2003 15:08:16 +0200
+
+vim-latexsuite (0.20030726-1) unstable; urgency=low
+
+  * New upstream release
+    - a new ftplugin file to trigger the bibtex mappings (Closes: #202932)
+    - $HOME/.vim/ftplugin/tex/texrc works (Closes: #202955)
+  * debian/control:
+    - architecture changed from any to all
+    - changed Build-Depends to Build-Depends-Indep
+    - bumping Standard-Version to 3.6.0 (nothing to change)
+  * Makefile:
+    - dealing with upstream ChangeLog file
+    - added doc/ to fix-perm target
+  * debian/README.debian: added vim-latexsuite resources and note about
+    documentation
+  * debian/rules: installing upstream ChangeLog
+  * ls-help.vim moved from plugin/ to debian/ and added to debian/install
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Sun, 27 Jul 2003 00:26:27 +0200
+
+vim-latexsuite (0.20030605-1) unstable; urgency=low
+
+  * Initial Release (Closes: #178957)
+  * Added Makefile for install vim-latexsuite
+  * Changed ownership of files and directories in source tarball to root
+  * Automagically indexed help files
+  * Upload sponsored by Janusz A. Urbanowicz <alex@bofh.net.pl>
+
+ -- Artur R. Czechowski <arturcz@hell.pl>  Mon, 16 Jun 2003 01:56:29 +0200
+

@@ -1,0 +1,26 @@
+Source: vim-latexsuite
+Section: editors
+Priority: extra
+Maintainer: Johann Felix Soden <johfel@debian.org>
+Build-Depends: debhelper (>= 9~), python-support, python
+Standards-Version: 3.9.4
+Homepage: http://vim-latex.sourceforge.net/
+Vcs-Git: git://anonscm.debian.org/pkg-vim/vim-latexsuite.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-vim/vim-latexsuite.git
+
+Package: vim-latexsuite
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, ${perl:Depends}, vim-common (>= 1:7.1.314), vim, python
+Recommends: texlive-base-bin, vim-addon-manager
+Suggests: xpdf | pdf-viewer, gv | postscript-viewer, xdg-utils
+Enhances: vim
+Description: view, edit and compile LaTeX documents from within Vim
+ vim-latexsuite attempts to provide a comprehensive set of tools to view,
+ edit and compile LaTeX documents in Vim. Together, they provide tools starting
+ from macros to speed up editing LaTeX documents to functions for forward
+ searching .dvi documents.
+ .
+ This package also provides help to LaTeX in Vim.
+ .
+ By default, vim-latexsuite is not enabled. Please read
+ /usr/share/doc/vim-latexsuite/README.Debian after installing the package.

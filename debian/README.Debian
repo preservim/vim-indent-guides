@@ -1,0 +1,66 @@
+vim-latexsuite for Debian
+-------------------------
+
+Dear user, this package provides the vim addon latex-suite, but it is not enabled
+per default. If you want to enable it for your user account execute:
+	vim-addons install latex-suite
+Similarly, to enable it for all users of this system execute (as root):
+	 vim-addons -w install latex-suite
+vim-addons is provided by the vim-addon-manager package, have a look at its
+manpage for more information.
+
+Additionally, you need to add the following lines
+ filetype plugin on
+ set grepprg=grep\ -nH\ $*
+ filetype indent on
+ let g:tex_flavor='latex'
+to ~/.vimrc (or to /etc/vim/vimrc as root) for full usability.
+For more info about this lines, type ":help ls_1" in vim (after enabling this
+plugin with vim-addons).
+
+
+----
+
+From |latex-suite|:
+Latex-Suite attempts to provide a comprehensive set of tools to view, edit and
+compile LaTeX documents in Vim. Together, they provide tools starting from
+macros to speed up editing LaTeX documents to functions for forward searching
+.dvi documents. Latex-suite has been possible because of the contributions of
+many people. Please see |latex-suite-credits| for a list of people who have
+helped.
+
+vim-latexsuite documentation
+----------------------------
+This package contains two documentation sets integrated with the vim help
+system. You must edit a tex file in vim to activate it. Type:
+:help latex-suite - for vim-latexsuite help
+:help latex       - for LaTeX help
+
+There is a known bug, that sometimes makes the above documentation unavailable.
+It probably means you have installed other vim script package which is not
+compliant with Vim Scripting Policy. To make sure that this is the case, please
+run, as root, the following command:
+helpztags /usr/share/vim/addons/doc
+and check if documentation is available now.
+
+Even if it fixes the problem you are still encouraged to submit the bug. We
+need to hunt for packages which are not compliant with the mentioned policy.
+Just make sure that you give us all required information like:
+ - Is documentation available after running the helpztags command?
+ - Other installed vim script packages.
+
+List of installed packages should be attached to your bugreport automagically.
+If not, please run the following command:
+dpkg -S /usr/share/vim/addons/doc/* 2>/dev/null | cut -d: -f1 | sort -u
+and include the output in your bugreport.
+
+vim-latexsuite resources
+-----------------------
+Homepage: http://vim-latex.sourceforge.net/
+Project: http://sourceforge.net/projects/vim-latex/
+Mailing list: mailto:vim-latex-devel@lists.sourceforge.net
+
+If you have any questions regarding vim-latexsuite feel free to ask them
+on mailing list given above.
+
+ -- Artur R. Czechowski <arturcz@hell.pl>, Sat,  9 Aug 2003 16:55:25 +0200

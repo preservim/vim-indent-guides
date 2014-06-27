@@ -1,0 +1,17 @@
+Description: Fix double backslash in math environment replacement
+Author: Cédric Boutillier <cedric.boutillier@polytechnique.org>, Johann Felix Soden <johfel@debian.org>
+Bugs-Debian: http://bugs.debian.org/590926
+
+--- a/ftplugin/latex-suite/envmacros.vim	2010-07-28 10:03:59.000000000 +0400
++++ b/ftplugin/latex-suite/envmacros.vim	2010-07-28 09:56:07.000000000 +0400
+@@ -778,8 +778,8 @@
+ 				let second = '$$'
+ 			endif
+ 		else
+-			let first = '\\begin{' . a:env . '}'
+-			let second = '\\end{' . a:env . '}'
++			let first = '\begin{' . a:env . '}'
++			let second = '\end{' . a:env . '}'
+ 		endif
+ 
+ 		if b:DoubleDollars == 0
