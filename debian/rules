@@ -1,17 +1,18 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-DESTDIR=$(CURDIR)/debian/vim-latexsuite
+DESTDIR=$(CURDIR)/debian/vim-indent-guides
 ADDONSDIR=/usr/share/vim/addons
 
 %:
-	dh $@ --with=python2
+	dh $@
 
 override_dh_auto_build:
 
 
 override_dh_auto_install:
-	dh_auto_install -- DESTDIR=$(DESTDIR) BINDIR=/usr/share/doc/vim-latexsuite/contrib VIMDIR=$(ADDONSDIR)
+	install -d '$(DESTDIR)$(ADDONSDIR)'
+	cp -R autoload doc plugin '$(DESTDIR)$(ADDONSDIR)'
 	# gzip doc files
 	find $(DESTDIR)$(ADDONSDIR)/doc -type f -print0 | xargs -0 gzip -9
 
@@ -19,13 +20,7 @@ override_dh_install:
 	dh_install	
 	# generate file list for vim addons manager
 	#
-	( cd $(DESTDIR)$(ADDONSDIR) && find -type f ) | sed 's#./#  - #' >> $(DESTDIR)/usr/share/vim/registry/vim-latexsuite.yaml
-
-
-fix-perm:
-	find $(DIRS) doc -type f | xargs chmod a-x
-	chmod a+x ftplugin/latex-suite/outline.py \
-		debian/bug/vim-latexsuite/script
+	( cd $(DESTDIR)$(ADDONSDIR) && find -type f ) | sed 's#./#  - #' >> $(DESTDIR)/usr/share/vim/registry/vim-indent-guides.yaml
 
 gzip-doc: $(DOCFILES)
 

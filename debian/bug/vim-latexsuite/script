@@ -1,5 +1,0 @@
-#!/bin/bash
-exec >&3
-echo Vim related packages installed on this system:
-dpkg -S /usr/share/vim/addons/doc/* 2>/dev/null | cut -d: -f1 | sort -u | sed -e 's/^/ - /'
-echo 

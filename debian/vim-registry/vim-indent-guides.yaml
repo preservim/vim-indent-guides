@@ -1,0 +1,4 @@
+addon: indent-guides
+description: "plugin for visually displaying indent levels in Vim"
+disabledby: "let g:indent_guides_autocmds_enabled = 0"
+files:

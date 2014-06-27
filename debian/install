@@ -1,2 +1,1 @@
-debian/bug/vim-latexsuite	usr/share/bug
 debian/vim-registry/*.yaml	usr/share/vim/registry

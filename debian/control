@@ -1,26 +1,22 @@
-Source: vim-latexsuite
+Source: vim-indent-guides
 Section: editors
 Priority: extra
-Maintainer: Johann Felix Soden <johfel@debian.org>
-Build-Depends: debhelper (>= 9~), python-support, python
+Maintainer: Olivier Mehani <shtrom-debian@ssji.net>
+Build-Depends: debhelper (>= 9~)
 Standards-Version: 3.9.4
-Homepage: http://vim-latex.sourceforge.net/
-Vcs-Git: git://anonscm.debian.org/pkg-vim/vim-latexsuite.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-vim/vim-latexsuite.git
+Homepage: https://github.com/nathanaelkane/vim-indent-guides
 
-Package: vim-latexsuite
+Package: vim-indent-guides
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, ${perl:Depends}, vim-common (>= 1:7.1.314), vim, python
+Depends: ${misc:Depends}, vim-common (>= 1:7.2), vim
 Recommends: texlive-base-bin, vim-addon-manager
-Suggests: xpdf | pdf-viewer, gv | postscript-viewer, xdg-utils
 Enhances: vim
-Description: view, edit and compile LaTeX documents from within Vim
- vim-latexsuite attempts to provide a comprehensive set of tools to view,
- edit and compile LaTeX documents in Vim. Together, they provide tools starting
- from macros to speed up editing LaTeX documents to functions for forward
- searching .dvi documents.
- .
- This package also provides help to LaTeX in Vim.
- .
- By default, vim-latexsuite is not enabled. Please read
- /usr/share/doc/vim-latexsuite/README.Debian after installing the package.
+Description: plugin for visually displaying indent levels in Vim
+ * Can detect both tab and space indent styles.
+ * Automatically inspects your colorscheme and picks appropriate colors (gVim only).
+ * Will highlight indent levels with alternating colors.
+ * Full support for gVim and basic support for Terminal Vim.
+ * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
+ * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+ * Customizable start indent level.
+ * **NEW:** Highlight support for files with a mixture of tab and space indent styles.
