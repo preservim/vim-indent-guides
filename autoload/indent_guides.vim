@@ -180,7 +180,7 @@ endfunction
 " plugin is enabled.
 "
 function! indent_guides#init_script_vars()
-  if &l:shiftwidth > 0
+  if &l:shiftwidth > 0 && &l:expandtab
     let s:indent_size = &l:shiftwidth
   else
     let s:indent_size = &l:tabstop
