@@ -81,6 +81,8 @@ augroup indent_guides
 
   autocmd BufEnter,WinEnter,FileType * call indent_guides#process_autocmds()
 
-  " Trigger BufEnter and process modelines.
-  autocmd ColorScheme * doautocmd indent_guides BufEnter
+  if v:version >= 704
+    " Trigger BufEnter
+    autocmd ColorScheme <nomodeline> * doautocmd indent_guides BufEnter
+  endif
 augroup END
