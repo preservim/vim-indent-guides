@@ -260,6 +260,8 @@ Bug reports, feedback, suggestions etc are welcomed.
     soft indentation (thanks @sergey-vlasov).
   * Added option g:|indent_guides_default_mapping| to control whether the
     default mapping (<Leader>ig) gets set (thanks @suy).
+  * Set size of indent guide to `tabstop` value when `shiftwidth=0` is used
+    (thanks @darkfeline).
 
 1.7~
   * Added way to override the default mapping (thanks @xuhdev).
