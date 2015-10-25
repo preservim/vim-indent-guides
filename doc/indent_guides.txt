@@ -162,6 +162,14 @@ Default: 0. Values: 0 or 1.
 <
 
 ------------------------------------------------------------------------------
+                                             *'indent_guides_exclude_buftype'*
+Use this option to try and disable the plugin on non-file buffers
+
+Default: 0. Values: 0 or 1
+>
+  let g:indent_guides_exclude_buftype = 0
+<
+------------------------------------------------------------------------------
                                              *'indent_guides_exclude_filetypes'*
 Use this option to specify a list of filetypes to disable the plugin for.
 
