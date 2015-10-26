@@ -262,6 +262,7 @@ Bug reports, feedback, suggestions etc are welcomed.
     default mapping (<Leader>ig) gets set (thanks @suy).
   * Set size of indent guide to `tabstop` value when `shiftwidth=0` or
     `noexpandtab` is used (thanks @darkfeline and @wilywampa).
+  * Don't load plugin in unsupported versions of Vim (thanks @dersaidin).
 
 1.7~
   * Added way to override the default mapping (thanks @xuhdev).
