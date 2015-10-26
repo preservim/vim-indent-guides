@@ -1,6 +1,11 @@
 " Author:   Nate Kane <nathanaelkane AT gmail DOT com>
 " Homepage: http://github.com/nathanaelkane/vim-indent-guides
 
+" Do not load if vim is too old
+if (v:version == 701 && !exists('*matchadd')) || (v:version < 701)
+  finish
+endif
+
 if exists('g:loaded_indent_guides') || &cp
   finish
 endif
