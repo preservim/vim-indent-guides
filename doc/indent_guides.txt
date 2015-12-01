@@ -143,6 +143,15 @@ Default: 1. Values: 0 or 1.
 <
 
 ------------------------------------------------------------------------------
+                                                    *'indent_guides_tab_guides'*
+Use this option to control whether the plugin considers tabs as indention.
+
+Default: 1. Values: 0 or 1.
+>
+  let g:indent_guides_tab_guides = 0
+
+
+------------------------------------------------------------------------------
                                                   *'indent_guides_soft_pattern'*
 Use this option to explicitly specify a pattern for soft indentation. For
 example to match spaces only in the beginning of line use ' ' pattern.
