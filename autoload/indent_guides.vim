@@ -1,5 +1,9 @@
 " Author:   Nate Kane <nathanaelkane AT gmail DOT com>
 " Homepage: http://github.com/nathanaelkane/vim-indent-guides
+"
+if !exists("g:indent_guides_force_gui_colors")
+  let g:indent_guides_force_gui_colors = 0
+endif
 
 "
 " Toggles the indent guides on and off.
@@ -91,7 +95,7 @@ endfunction
 "
 function! indent_guides#highlight_colors()
   if s:auto_colors
-    if has('gui_running')
+    if has('gui_running') || g:indent_guides_force_gui_colors == 1
       call indent_guides#gui_highlight_colors()
     else
       call indent_guides#basic_highlight_colors()
