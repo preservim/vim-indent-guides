@@ -91,7 +91,7 @@ endfunction
 "
 function! indent_guides#highlight_colors()
   if s:auto_colors
-    if has('gui_running')
+    if has('gui_running') || has('nvim')
       call indent_guides#gui_highlight_colors()
     else
       call indent_guides#basic_highlight_colors()
