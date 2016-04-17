@@ -143,6 +143,15 @@ Default: 1. Values: 0 or 1.
 <
 
 ------------------------------------------------------------------------------
+                                                    *'indent_guides_tab_guides'*
+Use this option to control whether the plugin considers tabs as indention.
+
+Default: 1. Values: 0 or 1.
+>
+  let g:indent_guides_tab_guides = 0
+<
+
+------------------------------------------------------------------------------
                                                   *'indent_guides_soft_pattern'*
 Use this option to explicitly specify a pattern for soft indentation. For
 example to match spaces only in the beginning of line use ' ' pattern.
@@ -263,6 +272,8 @@ Bug reports, feedback, suggestions etc are welcomed.
   * Set size of indent guide to `tabstop` value when `shiftwidth=0` or
     `noexpandtab` is used (thanks @darkfeline and @wilywampa).
   * Don't load plugin in unsupported versions of Vim (thanks @dersaidin).
+  * Added option g:|indent_guides_tab_guides| to control whether tabs are
+    considered as indention (thanks @amerlyq).
 
 1.7~
   * Added way to override the default mapping (thanks @xuhdev).
