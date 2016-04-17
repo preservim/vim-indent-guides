@@ -50,13 +50,11 @@ function! indent_guides#enable()
 
     " define the higlight patterns and add to matches list
     if g:indent_guides_space_guides
-      let l:soft_pattern = indent_guides#indent_highlight_pattern(
-            \ g:indent_guides_soft_pattern, l:column_start, s:guide_size)
+      let l:soft_pattern = indent_guides#indent_highlight_pattern(g:indent_guides_soft_pattern, l:column_start, s:guide_size)
       call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
     end
     if g:indent_guides_tab_guides
-      let l:hard_pattern = indent_guides#indent_highlight_pattern(
-            \ '\t', l:column_start, s:indent_size)
+      let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
       call add(w:indent_guides_matches, matchadd(l:group, l:hard_pattern))
     end
   endfor
