@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+DESTDIR=$(CURDIR)/debian/vim-indent-guides
+ADDONSDIR=/usr/share/vim/addons
+
+%:
+	dh $@
+
+override_dh_auto_build:
+
+
+override_dh_auto_install:
+	install -d '$(DESTDIR)$(ADDONSDIR)'
+	cp -R autoload doc plugin '$(DESTDIR)$(ADDONSDIR)'
+	# gzip doc files
+	find $(DESTDIR)$(ADDONSDIR)/doc -type f -print0 | xargs -0 gzip -9
+
+override_dh_install:
+	dh_install	
+	# generate file list for vim addons manager
+	#
+	( cd $(DESTDIR)$(ADDONSDIR) && find -type f ) | sed 's#./#  - #' >> $(DESTDIR)/usr/share/vim/registry/vim-indent-guides.yaml
+
+gzip-doc: $(DOCFILES)
+
+%.txt.gz: %.txt
+	gzip -9 < $< > $@
+
+.PHONY: gzip-doc fix-perm

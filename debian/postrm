@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "remove" ]; then
+    helpztags /usr/share/vim/addons/doc;
+fi
+
+#DEBHELPER#
+
+exit 0

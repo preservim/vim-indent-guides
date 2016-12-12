@@ -1,1 +1,3 @@
 doc/tags
+debian/vim-indent-guides/
+debian/vim-indent-guides.*

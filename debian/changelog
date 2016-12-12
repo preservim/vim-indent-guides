@@ -1,0 +1,5 @@
+vim-indent-guides (9999) UNRELEASED; urgency=medium
+
+  * import debianisation from vim-latexsuite
+
+ -- Olivier Mehani <shtrom-debian@ssji.net>  Fri, 27 Jun 2014 23:34:27 +1000

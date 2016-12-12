@@ -1,0 +1,22 @@
+Source: vim-indent-guides
+Section: editors
+Priority: extra
+Maintainer: Olivier Mehani <shtrom-debian@ssji.net>
+Build-Depends: debhelper (>= 9~)
+Standards-Version: 3.9.4
+Homepage: https://github.com/nathanaelkane/vim-indent-guides
+
+Package: vim-indent-guides
+Architecture: all
+Depends: ${misc:Depends}, vim-common (>= 1:7.2), vim
+Recommends: texlive-base-bin, vim-addon-manager
+Enhances: vim
+Description: plugin for visually displaying indent levels in Vim
+ * Can detect both tab and space indent styles.
+ * Automatically inspects your colorscheme and picks appropriate colors (gVim only).
+ * Will highlight indent levels with alternating colors.
+ * Full support for gVim and basic support for Terminal Vim.
+ * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
+ * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
+ * Customizable start indent level.
+ * **NEW:** Highlight support for files with a mixture of tab and space indent styles.
