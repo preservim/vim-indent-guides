@@ -109,8 +109,12 @@ function! indent_guides#basic_highlight_colors()
   let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
   let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
 
-  exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' guifg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[0] . ' ctermfg=' . l:cterm_colors[1]
-  exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' guifg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[1] . ' ctermfg=' . l:cterm_colors[0]
+  if !hlexists('IndentGuidesEven')
+    exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' guifg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[0] . ' ctermfg=' . l:cterm_colors[1]
+  endif
+  if !hlexists('IndentGuidesOdd')
+    exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' guifg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[1] . ' ctermfg=' . l:cterm_colors[0]
+  endif
 endfunction
 
 "
@@ -141,8 +145,12 @@ function! indent_guides#gui_highlight_colors()
     let l:hi_even_bg = indent_guides#lighten_or_darken_color(l:hi_odd_bg)
 
     " define the new highlights
-    exe 'hi IndentGuidesOdd  guibg=' . l:hi_odd_bg . ' guifg=' . l:hi_even_bg
-    exe 'hi IndentGuidesEven guibg=' . l:hi_even_bg . ' guifg=' . l:hi_odd_bg
+    if !hlexists('IndentGuidesOdd')
+      exe 'hi IndentGuidesOdd  guibg=' . l:hi_odd_bg . ' guifg=' . l:hi_even_bg
+    endif
+    if !hlexists('IndentGuidesEven')
+      exe 'hi IndentGuidesEven guibg=' . l:hi_even_bg . ' guifg=' . l:hi_odd_bg
+    endif
   end
 endfunction
 
