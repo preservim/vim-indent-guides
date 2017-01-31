@@ -42,8 +42,19 @@ Alternatively you can add the following lines to your colorscheme file.
     hi IndentGuidesOdd  guibg=red   ctermbg=3
     hi IndentGuidesEven guibg=green ctermbg=4
 
-### Terminal Vim
-At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead, some preset colors are used depending on whether `background` is set to `dark` or `light`.
+### Terminal Vim with 'termguicolors' support
+This plugin will work if Vim is compiled with support for the feature `termguicolors`.
+
+You can check support with `vim --version`; you should see `+termguicolors` in the feature list.
+
+If `termguicolors` is supported, toggle it on.  In your `.vimrc`, add the following line:
+
+    termguicolors
+
+### Terminal Vim without 'termguicolors' support
+Without 'termguicolors', colors cannot be automatically calculated based on your colorscheme.
+
+Instead, some preset colors are used depending on whether `background` is set to `dark` or `light`.
 
 When `set background=dark` is used, the following highlight colors will be defined:
 
