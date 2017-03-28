@@ -286,7 +286,7 @@ function! indent_guides#exclude_filetype() abort
       return 1
     endif
   endif
-  for ft in split(&ft, '\.')
+  for ft in split(&ft, '\.', 1)
     if index(g:indent_guides_exclude_filetypes, ft) > -1
       return 1
     end

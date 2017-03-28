@@ -180,7 +180,8 @@ Default: 0. Values: 0 or 1
 <
 ------------------------------------------------------------------------------
                                              *'indent_guides_exclude_filetypes'*
-Use this option to specify a list of filetypes to disable the plugin for.
+Use this option to specify a list of filetypes to disable the plugin for. Use
+'' for files with no filetypes set.
 
 Default: ['help']. Values: list of strings.
 >
@@ -273,8 +274,9 @@ Bug reports, feedback, suggestions etc are welcomed.
 7. CHANGELOG                                           *indent-guides-changelog*
 
 1.8 (pending release)~
+  * Allow exclude files with no 'filetype' set (thanks @noscript).
   * Added option g:|indent_guides_soft_pattern| to control the pattern for
-    soft indentation (thanks @sergey-vlasov).
+    soft indentation (thanks @noscript).
   * Added option g:|indent_guides_default_mapping| to control whether the
     default mapping (<Leader>ig) gets set (thanks @suy).
   * Set size of indent guide to `tabstop` value when `shiftwidth=0` or
