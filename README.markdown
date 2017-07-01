@@ -33,7 +33,7 @@ and then run the following command from inside vim:
 	:PluginInstall
 
 ## Usage
-The default mapping to toggle the plugin is `<Leader>ig` (<kbd>\</kbd> `ig`).
+The default mapping to toggle the plugin is `<Leader>ig` (<kbd>\\</kbd> `ig`).
 
 You can also use the following commands inside vim.
 
