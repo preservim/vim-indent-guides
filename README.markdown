@@ -11,24 +11,46 @@ Indent Guides is a plugin for visually displaying indent levels in Vim.
 * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
 * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
 * Customizable start indent level.
-* **NEW:** Highlight support for files with a mixture of tab and space indent styles.
+* Highlight support for files with a mixture of tab and space indent styles.
 
 ## Requirements
 * Vim 7.2+
 
 ## Installation
-To install the plugin just copy `autoload`, `plugin`, `doc` directories into your `.vim` directory.
+To install the plugin copy `autoload`, `plugin`, `doc` directories into your `.vim` directory.
 
-Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, just clone this repo into a subdirectory of your `.vim/bundle` directory like so:
+If you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, clone this repo into a subdirectory of your `.vim/bundle` directory like so:
 
     cd ~/.vim/bundle
     git clone git://github.com/nathanaelkane/vim-indent-guides.git
 
-## Usage
-The default mapping to toggle the plugin is `<Leader>ig`
+If you have [Vundle](https://github.com/VundleVim/Vundle.vim) installed, add the following line to your `~/.vimrc` in the appropriate spot (see the Vundle.vim README for help)
 
+		Plugin 'nathanaelkane/vim-indent-guides'
+
+and then run the following command from inside vim:
+
+		:PluginInstall
+
+## Usage
+The default mapping to toggle the plugin is 
 ### gVim
 **This plugin should work with gVim out of the box, no configuration needed.** It will automatically inspect your colorscheme and pick appropriate colors.
+
+### Basic Plugin Usage
+The default mapping to toggle the plugin is `<Leader>ig` (<kbd>\</kbd> `ig`).
+
+You can also use the following commands inside vim.
+
+		:IndentGuideEnable
+		:IndentGuideDisable
+		:IndentGuideToggle
+
+If you would like to have indent guides enabled by default, you can add the following to your `~/.vimrc`.
+
+		autocmd VimEnter * IndentGuideEnable
+
+You have to use an autocommand due to the fact that vim loads it's own source file before loading any plugin commands, so attempting to execute `IndentGuideEnable` inside of your `~/.vimrc` normally would result in an error.
 
 ### Setting custom indent colors
 Here's an example of how to define custom colors instead of using the ones the plugin automatically generates for you. Add this to your `.vimrc` file:
