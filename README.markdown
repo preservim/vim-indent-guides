@@ -11,21 +11,41 @@ Indent Guides is a plugin for visually displaying indent levels in Vim.
 * Seems to work on Windows gVim 7.3 (haven't done any extensive tests though).
 * Customizable size for indent guides, eg. skinny guides (soft-tabs only).
 * Customizable start indent level.
-* **NEW:** Highlight support for files with a mixture of tab and space indent styles.
+* Highlight support for files with a mixture of tab and space indent styles.
 
 ## Requirements
 * Vim 7.2+
 
 ## Installation
-To install the plugin just copy `autoload`, `plugin`, `doc` directories into your `.vim` directory.
+To install the plugin copy `autoload`, `plugin`, `doc` directories into your `.vim` directory.
 
-Alternatively if you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, just clone this repo into a subdirectory of your `.vim/bundle` directory like so:
+### Pathogen
+If you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, clone this repo into a subdirectory of your `.vim/bundle` directory like so:
 
     cd ~/.vim/bundle
     git clone git://github.com/nathanaelkane/vim-indent-guides.git
 
+### Vundle
+If you have [Vundle](https://github.com/VundleVim/Vundle.vim) installed, add the following line to your `~/.vimrc` in the appropriate spot (see the Vundle.vim README for help):
+
+    Plugin 'nathanaelkane/vim-indent-guides'
+
+and then run the following command from inside Vim:
+
+    :PluginInstall
+
 ## Usage
-The default mapping to toggle the plugin is `<Leader>ig`
+The default mapping to toggle the plugin is `<Leader>ig`.
+
+You can also use the following commands inside Vim:
+
+    :IndentGuidesEnable
+    :IndentGuidesDisable
+    :IndentGuidesToggle
+
+If you would like to have indent guides enabled by default, you can add the following to your `~/.vimrc`:
+
+    let g:indent_guides_enable_on_vim_startup = 1
 
 ### gVim
 **This plugin should work with gVim out of the box, no configuration needed.** It will automatically inspect your colorscheme and pick appropriate colors.
