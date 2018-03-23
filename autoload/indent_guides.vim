@@ -106,11 +106,34 @@ endfunction
 " gVim when colors can't be automatically calculated.
 "
 function! indent_guides#basic_highlight_colors()
-  let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
-  let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
+  let l:cterm_even = (&g:background == 'dark') ? 'darkgrey' : 'lightgrey'
+  let l:cterm_odd = (&g:background == 'dark') ? 'black' : 'white'
 
-  exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' guifg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[0] . ' ctermfg=' . l:cterm_colors[1]
-  exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' guifg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[1] . ' ctermfg=' . l:cterm_colors[0]
+  let l:gui_even = (&g:background == 'dark') ? 'grey15' : 'grey70'
+  let l:gui_odd = (&g:background == 'dark') ? 'grey30' : 'grey85'
+
+  " Try using the CursorColumn color set in many themes
+  let l:hl_column_background = indent_guides#capture_highlight('CursorColumn')
+
+  if l:hl_column_background != ''
+    let l:gui_even = l:hl_column_background
+    let l:cterm_even =  l:hl_column_background
+  endif
+
+  let l:hl_normal_background = indent_guides#capture_highlight('Normal')
+
+  if l:hl_normal_background != ''
+    let l:gui_odd = l:hl_normal_background
+    let l:cterm_odd = l:hl_normal_background
+  endif
+
+  if has('gui_running')
+      exe 'hi IndentGuidesEven guibg=' . l:gui_even . ' guifg=' . l:gui_odd
+      exe 'hi IndentGuidesOdd  guibg=' . l:gui_odd . ' guifg=' . l:gui_even
+  else
+      exe 'hi IndentGuidesEven ctermbg=' . l:cterm_even . ' ctermfg=' . l:cterm_odd
+      exe 'hi IndentGuidesOdd  ctermbg=' . l:cterm_odd . ' ctermfg=' . l:cterm_even
+  endif
 endfunction
 
 "
@@ -190,9 +213,6 @@ function! indent_guides#init_script_vars()
   let s:guide_size  = indent_guides#calculate_guide_size()
   let s:hi_normal   = indent_guides#capture_highlight('Normal')
 
-  " remove 'font=<value>' from the s:hi_normal string (only seems to happen on Vim startup in Windows)
-  let s:hi_normal = substitute(s:hi_normal, ' font=[A-Za-z0-9:]\+', "", "")
-
   " shortcuts to the global variables - this makes the code easier to read
   let s:debug             = g:indent_guides_debug
   let s:indent_levels     = g:indent_guides_indent_levels
@@ -243,15 +263,13 @@ endfunction
 " Captures and returns the output of highlight group definitions.
 "
 " Example: indent_guides#capture_highlight('normal')
-" Returns: 'Normal xxx guifg=#323232 guibg=#ffffff'
+" Returns: '' or a color
 "
 function! indent_guides#capture_highlight(group_name)
-  redir => l:output
-  exe "silent hi " . a:group_name
-  redir END
-
-  let l:output = substitute(l:output, "\n", "", "")
-  return l:output
+    if ! hlexists(a:group_name)
+        return ''
+    endif
+    return synIDattr(hlID(a:group_name), 'bgcolor')
 endfunction
 
 "
