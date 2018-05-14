@@ -22,7 +22,7 @@ To install the plugin copy `autoload`, `plugin`, `doc` directories into your `.v
 ### Pathogen
 If you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) installed, clone this repo into a subdirectory of your `.vim/bundle` directory like so:
 
-```
+```bash
 cd ~/.vim/bundle
 git clone git://github.com/nathanaelkane/vim-indent-guides.git
 ```
