@@ -39,6 +39,7 @@ and then run the following command from inside Vim:
 ```vim
 :PluginInstall
 ```
+
 ## Usage
 The default mapping to toggle the plugin is `<Leader>ig`.
 
@@ -55,6 +56,7 @@ If you would like to have indent guides enabled by default, you can add the foll
 ```vim
 let g:indent_guides_enable_on_vim_startup = 1
 ```
+
 ### gVim
 **This plugin should work with gVim out of the box, no configuration needed.** It will automatically inspect your colorscheme and pick appropriate colors.
 
@@ -66,12 +68,14 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 ```
+
 Alternatively you can add the following lines to your colorscheme file.
 
 ```vim
 hi IndentGuidesOdd  guibg=red   ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 ```
+
 ### Terminal Vim
 At the moment Terminal Vim only has basic support. This means is that colors won't be automatically calculated based on your colorscheme. Instead, some preset colors are used depending on whether `background` is set to `dark` or `light`.
 
