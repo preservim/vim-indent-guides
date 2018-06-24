@@ -86,6 +86,9 @@ augroup indent_guides
   endif
 
   autocmd BufEnter,WinEnter,FileType * call indent_guides#process_autocmds()
+  if (v:version == 704 && has('patch786')) || (v:version > 704)
+    autocmd OptionSet tabstop,shiftwidth,expandtab call indent_guides#process_autocmds()
+  endif
 
   " Trigger BufEnter and process modelines.
   autocmd ColorScheme * doautocmd indent_guides BufEnter
