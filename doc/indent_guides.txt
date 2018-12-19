@@ -63,6 +63,14 @@ Features:~
 ==============================================================================
 3. OPTIONS                                               *indent-guides-options*
 
+All options described bellow could be used at buffer level if needed without
+cluttering the other windows / buffers. The buffer variables could be used for
+example to change only settings for particular filetype with ftplugin files.
+
+Example (in ~/vim/ftplugin/sh.vim):
+>
+  let b:indent_guides_indent_levels = 50
+<
 ------------------------------------------------------------------------------
                                                  *'indent_guides_indent_levels'*
 Use this option to control how many indent levels to display guides for.
@@ -163,7 +171,8 @@ Default: '\s'. Values: Vim regexp.
 
 ------------------------------------------------------------------------------
                                          *'indent_guides_enable_on_vim_startup'*
-Use this option to control whether the plugin is enabled on Vim startup.
+Use this option to control whether the plugin is enabled on Vim startup and
+future buffers.
 
 Default: 0. Values: 0 or 1.
 >

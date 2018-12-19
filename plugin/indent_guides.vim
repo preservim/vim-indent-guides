@@ -82,6 +82,7 @@ augroup indent_guides
   autocmd!
 
   if g:indent_guides_enable_on_vim_startup
+    let g:indent_guides_autocmds_enabled = 1
     autocmd VimEnter * :IndentGuidesEnable
   endif
 
