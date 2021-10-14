@@ -44,7 +44,7 @@ function s:InitVariable(var, value)
 endfunction
 
 " Fixed global variables
-let g:indent_guides_autocmds_enabled         = 0
+let b:indent_guides_autocmds_enabled         = 0
 let g:indent_guides_color_hex_pattern        = '#[0-9A-Fa-f]\{6\}'
 let g:indent_guides_color_hex_guibg_pattern  = 'guibg=\zs' . g:indent_guides_color_hex_pattern . '\ze'
 let g:indent_guides_color_name_guibg_pattern = "guibg='\\?\\zs[0-9A-Za-z ]\\+\\ze'\\?"
