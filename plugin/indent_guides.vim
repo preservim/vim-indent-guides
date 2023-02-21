@@ -35,7 +35,7 @@ command! -bar IndentGuidesDisable call s:IndentGuidesDisable()
 "
 function s:InitVariable(var, value)
   if !exists(a:var)
-    if type(a:value) == type("")
+    if type(a:value) == type('')
       exec 'let ' . a:var . ' = ' . "'" . a:value . "'"
     else
       exec 'let ' . a:var . ' = ' .  a:value
