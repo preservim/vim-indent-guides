@@ -4,7 +4,7 @@
 "
 " Toggles the indent guides on and off.
 "
-function! indent_guides#toggle()
+function! indent_guides#toggle() abort
   call indent_guides#init_matches()
 
   if empty(w:indent_guides_matches)
@@ -18,7 +18,7 @@ endfunction
 " Called from autocmds, keeps indent guides enabled or disabled when entering
 " other buffers and windows.
 "
-function! indent_guides#process_autocmds()
+function! indent_guides#process_autocmds() abort
   if g:indent_guides_autocmds_enabled
     call indent_guides#enable()
   else
@@ -30,7 +30,7 @@ endfunction
 " Enables the indent guides for the current buffer and any other buffer upon
 " entering it.
 "
-function! indent_guides#enable()
+function! indent_guides#enable() abort
   let g:indent_guides_autocmds_enabled = 1
 
   if &diff || indent_guides#exclude_filetype()
@@ -64,7 +64,7 @@ endfunction
 " Disables the indent guides for the current buffer and any other buffer upon
 " entering it.
 "
-function! indent_guides#disable()
+function! indent_guides#disable() abort
   let g:indent_guides_autocmds_enabled = 0
   call indent_guides#clear_matches()
 endfunction
@@ -72,7 +72,7 @@ endfunction
 "
 " Clear all highlight matches for the current window.
 "
-function! indent_guides#clear_matches()
+function! indent_guides#clear_matches() abort
   call indent_guides#init_matches()
   if !empty(w:indent_guides_matches)
     let l:index = 0
@@ -91,7 +91,7 @@ endfunction
 "
 " Automagically calculates and defines the indent highlight colors.
 "
-function! indent_guides#highlight_colors()
+function! indent_guides#highlight_colors() abort
   if s:auto_colors
     if has('gui_running') || has('nvim')
       call indent_guides#gui_highlight_colors()
@@ -105,7 +105,7 @@ endfunction
 " Defines some basic indent highlight colors that work for Terminal Vim and
 " gVim when colors can't be automatically calculated.
 "
-function! indent_guides#basic_highlight_colors()
+function! indent_guides#basic_highlight_colors() abort
   let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
   let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
 
@@ -117,7 +117,7 @@ endfunction
 " Automagically calculates and defines the indent highlight colors for gui
 " vim.
 "
-function! indent_guides#gui_highlight_colors()
+function! indent_guides#gui_highlight_colors() abort
   let l:hi_normal_guibg = ''
 
   " capture the backgroud color from the normal highlight
@@ -150,7 +150,7 @@ endfunction
 " Takes a color and darkens or lightens it depending on whether a dark or light
 " colorscheme is being used.
 "
-function! indent_guides#lighten_or_darken_color(color)
+function! indent_guides#lighten_or_darken_color(color) abort
   let l:new_color = ''
 
   if (&g:background == 'dark')
@@ -165,7 +165,7 @@ endfunction
 "
 " Define default highlights.
 "
-function! indent_guides#define_default_highlights()
+function! indent_guides#define_default_highlights() abort
   hi default clear IndentGuidesOdd
   hi default clear IndentGuidesEven
 endfunction
@@ -173,7 +173,7 @@ endfunction
 "
 " Init the w:indent_guides_matches variable.
 "
-function! indent_guides#init_matches()
+function! indent_guides#init_matches() abort
   let w:indent_guides_matches = exists('w:indent_guides_matches') ? w:indent_guides_matches : []
 endfunction
 
@@ -181,7 +181,7 @@ endfunction
 " We need to initialize these vars every time a buffer is entered while the
 " plugin is enabled.
 "
-function! indent_guides#init_script_vars()
+function! indent_guides#init_script_vars() abort
   if &l:shiftwidth > 0 && &l:expandtab
     let s:indent_size = &l:shiftwidth
   else
@@ -229,7 +229,7 @@ endfunction
 "
 " NOTE: Currently, this only works when soft-tabs are being used.
 "
-function! indent_guides#calculate_guide_size()
+function! indent_guides#calculate_guide_size() abort
   let l:guide_size = g:indent_guides_guide_size
 
   if l:guide_size == 0 || l:guide_size > s:indent_size
@@ -245,7 +245,7 @@ endfunction
 " Example: indent_guides#capture_highlight('normal')
 " Returns: 'Normal xxx guifg=#323232 guibg=#ffffff'
 "
-function! indent_guides#capture_highlight(group_name)
+function! indent_guides#capture_highlight(group_name) abort
   redir => l:output
   exe "silent hi " . a:group_name
   redir END
@@ -266,7 +266,7 @@ endfunction
 " Example: indent_guides#indent_highlight_pattern('\t', 9, 2)
 " Returns: /^\t*\%9v\zs\t*\%11v\ze/
 "
-function! indent_guides#indent_highlight_pattern(indent_pattern, column_start, indent_size)
+function! indent_guides#indent_highlight_pattern(indent_pattern, column_start, indent_size) abort
   let l:pattern  = '^' . a:indent_pattern . '*\%' . a:column_start . 'v\zs'
   let l:pattern .= a:indent_pattern . '*\%' . (a:column_start + a:indent_size) . 'v'
   let l:pattern .= '\ze'
@@ -276,7 +276,7 @@ endfunction
 "
 " Detect if any of the buffer filetypes should be excluded.
 "
-function! indent_guides#exclude_filetype()
+function! indent_guides#exclude_filetype() abort
   for ft in split(&ft, '\.')
     if index(g:indent_guides_exclude_filetypes, ft) > -1
       return 1
