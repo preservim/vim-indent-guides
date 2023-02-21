@@ -285,7 +285,7 @@ endfunction
 "
 function! indent_guides#exclude_filetype() abort
   if exists('g:indent_guides_exclude_buftype')
-    if g:indent_guides_exclude_buftype && &buftype != ''
+    if g:indent_guides_exclude_buftype && &buftype !=# ''
       return 1
     endif
   endif
