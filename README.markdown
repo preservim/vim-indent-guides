@@ -24,7 +24,7 @@ If you have [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332) ins
 
 ```bash
 cd ~/.vim/bundle
-git clone git://github.com/nathanaelkane/vim-indent-guides.git
+git clone git://github.com/preservim/vim-indent-guides.git
 ```
 
 ### Vundle

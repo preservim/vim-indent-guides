@@ -248,8 +248,8 @@ Why did I build this plugin?~
   * I wanted to learn me some VimL.
 
 Links:~
-  * Github:        https://github.com/nathanaelkane/vim-indent-guides
-  * Bugs & Issues: https://github.com/nathanaelkane/vim-indent-guides/issues
+  * Github:        https://github.com/preservim/vim-indent-guides
+  * Bugs & Issues: https://github.com/preservim/vim-indent-guides/issues
 
 Credits:~
   * Matt Wozniski (godlygeek) for letting me use the list of color names and

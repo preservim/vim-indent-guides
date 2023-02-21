@@ -1,5 +1,5 @@
 " Author:   Nate Kane <nathanaelkane AT gmail DOT com>
-" Homepage: http://github.com/nathanaelkane/vim-indent-guides
+" Homepage: http://github.com/preservim/vim-indent-guides
 
 "
 " Return hex string equivalent to given decimal string or number.
