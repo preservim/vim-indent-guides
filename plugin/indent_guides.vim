@@ -67,7 +67,7 @@ if !exists('g:indent_guides_exclude_filetypes')
 endif
 
 " Default mapping
-if !hasmapto('<Plug>IndentGuidesToggle', 'n') && maparg('<Leader>ig', 'n') == ''
+if !hasmapto('<Plug>IndentGuidesToggle', 'n') && maparg('<Leader>ig', 'n') ==# ''
     \ && g:indent_guides_default_mapping != 0
   nmap <silent><unique> <Leader>ig <Plug>IndentGuidesToggle
 endif

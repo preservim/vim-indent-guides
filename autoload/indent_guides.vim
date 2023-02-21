@@ -106,8 +106,8 @@ endfunction
 " gVim when colors can't be automatically calculated.
 "
 function! indent_guides#basic_highlight_colors() abort
-  let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
-  let l:gui_colors   = (&g:background == 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
+  let l:cterm_colors = (&g:background ==# 'dark') ? ['darkgrey', 'black'] : ['lightgrey', 'white']
+  let l:gui_colors   = (&g:background ==# 'dark') ? ['grey15', 'grey30']  : ['grey70', 'grey85']
 
   exe 'hi IndentGuidesEven guibg=' . l:gui_colors[0] . ' guifg=' . l:gui_colors[1] . ' ctermbg=' . l:cterm_colors[0] . ' ctermfg=' . l:cterm_colors[1]
   exe 'hi IndentGuidesOdd  guibg=' . l:gui_colors[1] . ' guifg=' . l:gui_colors[0] . ' ctermbg=' . l:cterm_colors[1] . ' ctermfg=' . l:cterm_colors[0]
@@ -153,7 +153,7 @@ endfunction
 function! indent_guides#lighten_or_darken_color(color) abort
   let l:new_color = ''
 
-  if (&g:background == 'dark')
+  if (&g:background ==# 'dark')
     let l:new_color = color_helper#hex_color_lighten(a:color, s:change_percent)
   else
     let l:new_color = color_helper#hex_color_darken (a:color, s:change_percent)
