@@ -1,5 +1,7 @@
 # Indent Guides
 
+[![Vint](https://github.com/preservim/vim-indent-guides/workflows/Vint/badge.svg)](https://github.com/preservim/vim-indent-guides/actions?workflow=Vint)
+
 Indent Guides is a plugin for visually displaying indent levels in Vim.
 
 <img src="http://i.imgur.com/ONgoj.png" width="448" height="448" alt="" />
