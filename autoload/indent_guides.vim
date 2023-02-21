@@ -86,6 +86,13 @@ function! indent_guides#clear_matches() abort
       let l:index += l:index
     endfor
   endif
+
+  " Make sure to clear indent guide if remembered match id has gone somehow.
+  for l:match in getmatches()
+    if l:match.group =~# '^IndentGuides\v(Even|Odd)$'
+      call matchdelete(l:match.id)
+    endif
+  endfor
 endfunction
 
 "
