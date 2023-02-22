@@ -253,7 +253,7 @@ endfunction
 " Returns: 'Normal xxx guifg=#323232 guibg=#ffffff'
 "
 function! indent_guides#capture_highlight(group_name) abort
-  let l:output = execute('silent hi ' . a:group_name)
+  let l:output = execute('hi ' . a:group_name, 'silent')
   let l:output = substitute(l:output, '\n', '', '')
   return l:output
 endfunction
