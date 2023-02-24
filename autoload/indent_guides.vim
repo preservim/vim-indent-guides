@@ -296,7 +296,7 @@ endfunction
 " Choose local buffer variable first if exist or global variable if not
 " return -1 if none of local buffer / global variable exists
 "
-function! indent_guides#getvar(var)
-  let l:varName = "indent_guides_" . a:var
+function! indent_guides#getvar(var) abort
+  let l:varName = 'indent_guides_' . a:var
   return get(b:, l:varName, get(g:, l:varName, -1))
 endfunction
