@@ -19,7 +19,7 @@ endfunction
 " other buffers and windows.
 "
 function! indent_guides#process_autocmds() abort
-  if g:indent_guides_autocmds_enabled
+  if indent_guides#getvar('enable_on_vim_startup')
     call indent_guides#enable()
   else
     call indent_guides#disable()
@@ -27,11 +27,10 @@ function! indent_guides#process_autocmds() abort
 endfunction
 
 "
-" Enables the indent guides for the current buffer and any other buffer upon
-" entering it.
+" Enables the indent guides for the current buffer
 "
 function! indent_guides#enable() abort
-  let g:indent_guides_autocmds_enabled = 1
+  let b:indent_guides_enable_on_vim_startup = 1
 
   if &diff || indent_guides#exclude_filetype()
     call indent_guides#clear_matches()
@@ -49,11 +48,11 @@ function! indent_guides#enable() abort
     let l:column_start = (l:level - 1) * s:indent_size + 1
 
     " define the higlight patterns and add to matches list
-    if g:indent_guides_space_guides
-      let l:soft_pattern = indent_guides#indent_highlight_pattern(g:indent_guides_soft_pattern, l:column_start, s:guide_size)
+    if indent_guides#getvar('space_guides')
+      let l:soft_pattern = indent_guides#indent_highlight_pattern(indent_guides#getvar('soft_pattern'), l:column_start, s:guide_size)
       call add(w:indent_guides_matches, matchadd(l:group, l:soft_pattern))
     end
-    if g:indent_guides_tab_guides
+    if indent_guides#getvar('tab_guides')
       let l:hard_pattern = indent_guides#indent_highlight_pattern('\t', l:column_start, s:indent_size)
       call add(w:indent_guides_matches, matchadd(l:group, l:hard_pattern))
     end
@@ -65,7 +64,7 @@ endfunction
 " entering it.
 "
 function! indent_guides#disable() abort
-  let g:indent_guides_autocmds_enabled = 0
+  let b:indent_guides_enable_on_vim_startup = 0
   call indent_guides#clear_matches()
 endfunction
 
@@ -201,19 +200,19 @@ function! indent_guides#init_script_vars() abort
   let s:hi_normal = substitute(s:hi_normal, ' font=[A-Za-z0-9:]\+', '', '')
 
   " shortcuts to the global variables - this makes the code easier to read
-  let s:debug             = g:indent_guides_debug
-  let s:indent_levels     = g:indent_guides_indent_levels
-  let s:auto_colors       = g:indent_guides_auto_colors
-  let s:color_hex_pat     = g:indent_guides_color_hex_pattern
-  let s:color_hex_bg_pat  = g:indent_guides_color_hex_guibg_pattern
-  let s:color_name_bg_pat = g:indent_guides_color_name_guibg_pattern
-  let s:start_level       = g:indent_guides_start_level
+  let s:debug             = indent_guides#getvar('debug')
+  let s:indent_levels     = indent_guides#getvar('indent_levels')
+  let s:auto_colors       = indent_guides#getvar('auto_colors')
+  let s:color_hex_pat     = indent_guides#getvar('color_hex_pattern')
+  let s:color_hex_bg_pat  = indent_guides#getvar('color_hex_guibg_pattern')
+  let s:color_name_bg_pat = indent_guides#getvar('color_name_guibg_pattern')
+  let s:start_level       = indent_guides#getvar('start_level')
 
   " str2float not available in vim versions <= 7.1
   if has('float')
-    let s:change_percent = g:indent_guides_color_change_percent / str2float('100.0')
+    let s:change_percent = indent_guides#getvar('color_change_percent') / str2float('100.0')
   else
-    let s:change_percent = g:indent_guides_color_change_percent / 100.0
+    let s:change_percent = indent_guides#getvar('color_change_percent') / 100.0
   endif
 
   if s:debug
@@ -237,7 +236,7 @@ endfunction
 " NOTE: Currently, this only works when soft-tabs are being used.
 "
 function! indent_guides#calculate_guide_size() abort
-  let l:guide_size = g:indent_guides_guide_size
+  let l:guide_size = indent_guides#getvar('guide_size')
 
   if l:guide_size == 0 || l:guide_size > s:indent_size
     let l:guide_size = s:indent_size
@@ -281,15 +280,23 @@ endfunction
 " Detect if any of the buffer filetypes should be excluded.
 "
 function! indent_guides#exclude_filetype() abort
-  if exists('g:indent_guides_exclude_buftype')
-    if g:indent_guides_exclude_buftype && &buftype !=# ''
-      return 1
-    endif
+  if indent_guides#getvar('exclude_buftype') && &buftype !=# ''
+    return 1
   endif
   for ft in split(&ft, '\.', 1)
-    if index(g:indent_guides_exclude_filetypes, ft) > -1
+    if index(indent_guides#getvar('exclude_filetypes'), ft) > -1
       return 1
     end
   endfor
   return 0
+endfunction
+
+"
+" Return variables value
+" Choose local buffer variable first if exist or global variable if not
+" return -1 if none of local buffer / global variable exists
+"
+function! indent_guides#getvar(var) abort
+  let l:varName = 'indent_guides_' . a:var
+  return get(b:, l:varName, get(g:, l:varName, -1))
 endfunction
