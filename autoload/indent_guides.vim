@@ -250,11 +250,13 @@ endfunction
 " Captures and returns the output of highlight group definitions.
 "
 " Example: indent_guides#capture_highlight('normal')
-" Returns: 'Normal xxx guifg=#323232 guibg=#ffffff'
+" Returns: 'Normal fg=#323232 bg=#ffffff'
 "
 function! indent_guides#capture_highlight(group_name) abort
-  let l:output = execute('hi ' . a:group_name, 'silent')
-  let l:output = substitute(l:output, '\n', '', '')
+  let l:syn_id = synIDtrans(hlID(a:group_name))
+  let l:output = synIDattr(l:syn_id, 'name')
+  let l:output .= ' fg=' . synIDattr(l:syn_id, 'fg')
+  let l:output .= ' bg=' . synIDattr(l:syn_id, 'bg')
   return l:output
 endfunction
 
